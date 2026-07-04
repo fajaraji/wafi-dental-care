@@ -1,0 +1,85 @@
+{
+  "home": {
+    "hero": {
+      "title": "Wafi Dental Care",
+      "subtitle": "Tepat Tindakanya, Jelas Biayanya",
+      "tagline": "#OnPointDentist",
+      "cta": "Pesan Janji Temu"
+    },
+    "usp": {
+      "professional": {
+        "title": "Dokter Profesional",
+        "desc": "Tim dokter gigi berpengalaman dan bersertifikasi"
+      },
+      "complete": {
+        "title": "Layanan Lengkap",
+        "desc": "17+ layanan gigi untuk seluruh keluarga"
+      },
+      "sterile": {
+        "title": "Alat Steril",
+        "desc": "Peralatan medis modern dengan sterilisasi standar tinggi"
+      },
+      "comfortable": {
+        "title": "Tempat Nyaman",
+        "desc": "Ruang perawatan yang bersih, modern, dan nyaman"
+      }
+    },
+    "services": {
+      "title": "Layanan Kami",
+      "subtitle": "Solusi lengkap untuk kesehatan gigi Anda",
+      "viewAll": "Lihat Semua Layanan"
+    },
+    "doctors": {
+      "title": "Tim Dokter Kami",
+      "subtitle": "Dokter gigi profesional yang siap melayani Anda"
+    },
+    "testimonials": {
+      "title": "Apa Kata Pasien",
+      "subtitle": "Pengalaman nyata dari pasien Wafi Dental Care"
+    },
+    "cta": {
+      "title": "Siap Dapatkan Senyum Sehat?",
+      "subtitle": "Pesan janji temu sekarang dan konsultasikan kesehatan gigi Anda dengan dokter profesional kami",
+      "button": "Booking Sekarang"
+    }
+  },
+  "common": {
+    "logo": "Wafi Dental Care",
+    "bookNow": "Booking Sekarang",
+    "readMore": "Baca Selengkapnya",
+    "learnMore": "Pelajari Lebih Lanjut",
+    "contactUs": "Hubungi Kami",
+    "followUs": "Ikuti Kami",
+    "allRightsReserved": "© 2024 Wafi Dental Care. Seluruh hak cipta dilindungi.",
+    "language": "Bahasa",
+    "id": "ID",
+    "en": "EN"
+  },
+  "nav": {
+    "home": "Beranda",
+    "services": "Layanan",
+    "about": "Tentang Kami",
+    "doctors": "Dokter",
+    "gallery": "Galeri",
+    "testimonials": "Testimoni",
+    "blog": "Blog",
+    "contact": "Kontak"
+  },
+  "booking": {
+    "title": "Pesan Janji Temu",
+    "step1": "Pilih Layanan",
+    "step2": "Pilih Dokter",
+    "step3": "Pilih Jadwal",
+    "step4": "Data Diri",
+    "step5": "Pembayaran",
+    "step6": "Konfirmasi"
+  },
+  "footer": {
+    "about": "Wafi Dental Care adalah klinik gigi profesional di Yogyakarta yang mengutamakan ketepatan tindakan dan kejelasan biaya untuk setiap pasien.",
+    "services": "Layanan",
+    "quickLinks": "Tautan Cepat",
+    "contact": "Kontak",
+    "hours": "Jam Praktik",
+    "hoursDetail": "Senin - Minggu: 08.00 - 21.00 WIB"
+  }
+}

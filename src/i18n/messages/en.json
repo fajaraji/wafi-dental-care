@@ -1,0 +1,85 @@
+{
+  "home": {
+    "hero": {
+      "title": "Wafi Dental Care",
+      "subtitle": "Precise Treatment, Transparent Pricing",
+      "tagline": "#OnPointDentist",
+      "cta": "Book Appointment"
+    },
+    "usp": {
+      "professional": {
+        "title": "Professional Doctors",
+        "desc": "Experienced and certified dental professionals"
+      },
+      "complete": {
+        "title": "Complete Services",
+        "desc": "17+ dental services for the whole family"
+      },
+      "sterile": {
+        "title": "Sterile Equipment",
+        "desc": "Modern medical equipment with high-standard sterilization"
+      },
+      "comfortable": {
+        "title": "Comfortable Space",
+        "desc": "Clean, modern, and comfortable treatment rooms"
+      }
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Complete solutions for your dental health",
+      "viewAll": "View All Services"
+    },
+    "doctors": {
+      "title": "Our Dental Team",
+      "subtitle": "Professional dentists ready to serve you"
+    },
+    "testimonials": {
+      "title": "What Patients Say",
+      "subtitle": "Real experiences from Wafi Dental Care patients"
+    },
+    "cta": {
+      "title": "Ready for a Healthy Smile?",
+      "subtitle": "Book an appointment now and consult your dental health with our professional doctors",
+      "button": "Book Now"
+    }
+  },
+  "common": {
+    "logo": "Wafi Dental Care",
+    "bookNow": "Book Now",
+    "readMore": "Read More",
+    "learnMore": "Learn More",
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us",
+    "allRightsReserved": "© 2024 Wafi Dental Care. All rights reserved.",
+    "language": "Language",
+    "id": "ID",
+    "en": "EN"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "doctors": "Doctors",
+    "gallery": "Gallery",
+    "testimonials": "Testimonials",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "booking": {
+    "title": "Book Appointment",
+    "step1": "Select Service",
+    "step2": "Select Doctor",
+    "step3": "Select Schedule",
+    "step4": "Your Details",
+    "step5": "Payment",
+    "step6": "Confirmation"
+  },
+  "footer": {
+    "about": "Wafi Dental Care is a professional dental clinic in Yogyakarta that prioritizes treatment precision and pricing transparency for every patient.",
+    "services": "Services",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "hours": "Opening Hours",
+    "hoursDetail": "Monday - Sunday: 08:00 - 21:00 WIB"
+  }
+}
