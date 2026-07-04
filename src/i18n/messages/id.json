@@ -193,5 +193,16 @@
     "clinic": "Klinik",
     "facilities": "Fasilitas",
     "events": "Kegiatan"
+  },
+  "contact": {
+    "title": "Kontak Kami",
+    "subtitle": "Hubungi kami untuk konsultasi atau booking janji temu",
+    "metaDesc": "Hubungi Wafi Dental Care Yogyakarta untuk konsultasi, booking janji temu, atau informasi layanan gigi. WhatsApp, email, atau kunjungi klinik kami.",
+    "sendMessage": "Kirim Pesan",
+    "sendMessageDesc": "Ada pertanyaan? Kirim pesan dan tim kami akan merespons secepatnya.",
+    "address": "Alamat",
+    "hours": "Jam Praktik",
+    "phone": "Telepon",
+    "nearby": "Dekat Dengan"
   }
 }
