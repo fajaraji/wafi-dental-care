@@ -53,7 +53,17 @@
     "allRightsReserved": "© 2024 Wafi Dental Care. Seluruh hak cipta dilindungi.",
     "language": "Bahasa",
     "id": "ID",
-    "en": "EN"
+    "en": "EN",
+    "backToHome": "Kembali ke Beranda",
+    "backToBlog": "Kembali ke Blog",
+    "backToServices": "Kembali ke Layanan",
+    "publishedOn": "Dipublikasikan pada",
+    "by": "oleh",
+    "price": "Harga",
+    "duration": "Durasi",
+    "category": "Kategori",
+    "allCategories": "Semua Kategori",
+    "noResults": "Tidak ada hasil ditemukan"
   },
   "nav": {
     "home": "Beranda",
@@ -81,5 +91,73 @@
     "contact": "Kontak",
     "hours": "Jam Praktik",
     "hoursDetail": "Senin - Minggu: 08.00 - 21.00 WIB"
+  },
+  "services": {
+    "title": "Layanan Kami",
+    "subtitle": "Solusi lengkap untuk kesehatan gigi dan estetika senyum Anda",
+    "filterBy": "Filter Kategori",
+    "priceStart": "Mulai dari",
+    "minutes": "menit",
+    "detail": "Detail Layanan",
+    "description": "Deskripsi",
+    "bookThisService": "Booking Layanan Ini",
+    "otherServices": "Layanan Lainnya"
+  },
+  "doctors": {
+    "title": "Tim Dokter Kami",
+    "subtitle": "Dokter gigi profesional, berpengalaman, dan bersertifikasi yang siap memberikan perawatan terbaik",
+    "schedule": "Jadwal Praktik",
+    "profile": "Profil",
+    "bookWith": "Booking dengan {{name}}"
+  },
+  "about": {
+    "title": "Tentang Wafi Dental Care",
+    "subtitle": "Klinik gigi profesional di Yogyakarta dengan motto #OnPointDentist",
+    "story": "Cerita Kami",
+    "storyContent": "Wafi Dental Care didirikan dengan visi memberikan layanan kesehatan gigi berkualitas tinggi yang transparan dan terpercaya bagi masyarakat Yogyakarta dan sekitarnya. Kami percaya bahwa setiap pasien berhak mendapatkan perawatan gigi terbaik dengan biaya yang jelas dan tanpa kejutan.",
+    "storyContent2": "Dengan tim dokter gigi profesional yang berpengalaman di berbagai bidang spesialistik, kami berkomitmen untuk terus meningkatkan kualitas layanan melalui pendidikan berkelanjutan dan investasi pada teknologi kedokteran gigi terkini.",
+    "values": "Nilai Kami",
+    "value1Title": "Tepat Tindakanya",
+    "value1Desc": "Setiap prosedur dilakukan dengan presisi tinggi berdasarkan diagnosis yang akurat dan rencana perawatan yang terukur.",
+    "value2Title": "Jelas Biayanya",
+    "value2Desc": "Transparansi biaya adalah komitmen kami. Pasien mendapatkan rincian biaya lengkap sebelum perawatan dimulai.",
+    "value3Title": "Profesional & Ramah",
+    "value3Desc": "Tim dokter dan staf kami selalu mengutamakan kenyamanan pasien dengan pendekatan yang hangat dan profesional.",
+    "value4Title": "Teknologi Modern",
+    "value4Desc": "Kami menggunakan peralatan medis terkini dengan standar sterilisasi internasional untuk keamanan maksimal.",
+    "facilities": "Fasilitas Kami",
+    "facility1Title": "Ruang Tunggu Nyaman",
+    "facility1Desc": "Ruang tunggu yang bersih dan nyaman dengan hiburan TV dan WiFi gratis",
+    "facility2Title": "Ruang Perawatan Modern",
+    "facility2Desc": "4 dental unit modern dengan peralatan lengkap dan sistem sterilisasi standar tinggi",
+    "facility3Title": "Ruang Sterilisasi",
+    "facility3Desc": "Sterilisasi alat medis menggunakan autoclave dan ultrasonic cleaner",
+    "facility4Title": "Ruang Rontgen",
+    "facility4Desc": "Dilengkapi dental X-ray untuk diagnosis yang akurat dan cepat",
+    "facility5Title": "Area Parkir",
+    "facility5Desc": "Parkir yang memadai untuk mobil dan motor",
+    "facility6Title": "Dokter Spesialis",
+    "facility6Desc": "Tim dokter dengan berbagai spesialisasi untuk menangani kebutuhan gigi Anda"
+  },
+  "testimonials": {
+    "title": "Apa Kata Pasien Kami",
+    "subtitle": "Pengalaman nyata dari pasien yang telah merasakan perawatan di Wafi Dental Care",
+    "patient": "Pasien Wafi Dental Care",
+    "allTestimonials": "Semua Testimoni"
+  },
+  "blog": {
+    "title": "Blog & Artikel",
+    "subtitle": "Informasi dan tips seputar kesehatan gigi dan mulut",
+    "category": "Kategori",
+    "readArticle": "Baca Artikel",
+    "relatedPosts": "Artikel Terkait",
+    "shareArticle": "Bagikan"
+  },
+  "gallery": {
+    "title": "Galeri Wafi Dental Care",
+    "subtitle": "Lihat fasilitas dan suasana klinik kami",
+    "clinic": "Klinik",
+    "facilities": "Fasilitas",
+    "events": "Kegiatan"
   }
 }

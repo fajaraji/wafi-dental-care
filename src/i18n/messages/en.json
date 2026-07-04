@@ -53,7 +53,17 @@
     "allRightsReserved": "© 2024 Wafi Dental Care. All rights reserved.",
     "language": "Language",
     "id": "ID",
-    "en": "EN"
+    "en": "EN",
+    "backToHome": "Back to Home",
+    "backToBlog": "Back to Blog",
+    "backToServices": "Back to Services",
+    "publishedOn": "Published on",
+    "by": "by",
+    "price": "Price",
+    "duration": "Duration",
+    "category": "Category",
+    "allCategories": "All Categories",
+    "noResults": "No results found"
   },
   "nav": {
     "home": "Home",
@@ -81,5 +91,73 @@
     "contact": "Contact",
     "hours": "Opening Hours",
     "hoursDetail": "Monday - Sunday: 08:00 - 21:00 WIB"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Complete solutions for your dental health and smile aesthetics",
+    "filterBy": "Filter by Category",
+    "priceStart": "Starting from",
+    "minutes": "minutes",
+    "detail": "Service Details",
+    "description": "Description",
+    "bookThisService": "Book This Service",
+    "otherServices": "Other Services"
+  },
+  "doctors": {
+    "title": "Our Dental Team",
+    "subtitle": "Professional, experienced, and certified dentists ready to provide the best care",
+    "schedule": "Practice Schedule",
+    "profile": "Profile",
+    "bookWith": "Book with {{name}}"
+  },
+  "about": {
+    "title": "About Wafi Dental Care",
+    "subtitle": "Professional dental clinic in Yogyakarta with the motto #OnPointDentist",
+    "story": "Our Story",
+    "storyContent": "Wafi Dental Care was founded with a vision to provide high-quality, transparent, and trustworthy dental health services for the people of Yogyakarta and surrounding areas. We believe every patient deserves the best dental care with clear, surprise-free pricing.",
+    "storyContent2": "With a team of professional dentists experienced in various specialties, we are committed to continuously improving our service quality through continuous education and investment in the latest dental technology.",
+    "values": "Our Values",
+    "value1Title": "Precise Treatment",
+    "value1Desc": "Every procedure is performed with high precision based on accurate diagnosis and measurable treatment plans.",
+    "value2Title": "Transparent Pricing",
+    "value2Desc": "Transparency in pricing is our commitment. Patients receive complete cost breakdowns before treatment begins.",
+    "value3Title": "Professional & Friendly",
+    "value3Desc": "Our team of doctors and staff always prioritize patient comfort with a warm and professional approach.",
+    "value4Title": "Modern Technology",
+    "value4Desc": "We use the latest medical equipment with international sterilization standards for maximum safety.",
+    "facilities": "Our Facilities",
+    "facility1Title": "Comfortable Waiting Room",
+    "facility1Desc": "Clean and comfortable waiting room with TV entertainment and free WiFi",
+    "facility2Title": "Modern Treatment Rooms",
+    "facility2Desc": "4 modern dental units with complete equipment and high-standard sterilization system",
+    "facility3Title": "Sterilization Room",
+    "facility3Desc": "Medical equipment sterilization using autoclave and ultrasonic cleaner",
+    "facility4Title": "X-Ray Room",
+    "facility4Desc": "Equipped with dental X-ray for accurate and fast diagnosis",
+    "facility5Title": "Parking Area",
+    "facility5Desc": "Adequate parking for cars and motorcycles",
+    "facility6Title": "Specialist Doctors",
+    "facility6Desc": "Team of doctors with various specializations to handle your dental needs"
+  },
+  "testimonials": {
+    "title": "What Our Patients Say",
+    "subtitle": "Real experiences from patients who have received treatment at Wafi Dental Care",
+    "patient": "Wafi Dental Care Patient",
+    "allTestimonials": "All Testimonials"
+  },
+  "blog": {
+    "title": "Blog & Articles",
+    "subtitle": "Information and tips about dental and oral health",
+    "category": "Category",
+    "readArticle": "Read Article",
+    "relatedPosts": "Related Posts",
+    "shareArticle": "Share"
+  },
+  "gallery": {
+    "title": "Wafi Dental Care Gallery",
+    "subtitle": "See our clinic facilities and atmosphere",
+    "clinic": "Clinic",
+    "facilities": "Facilities",
+    "events": "Events"
   }
 }
