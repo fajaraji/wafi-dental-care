@@ -30,7 +30,7 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <AboutContent t={t} />
+      <AboutContent />
     </div>
   );
 }

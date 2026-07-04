@@ -15,6 +15,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://wafidentalcare.id"),
   title: {
     default: "Wafi Dental Care — Tepat Tindakanya, Jelas Biayanya",
     template: "%s — Wafi Dental Care",
@@ -32,6 +33,13 @@ export const metadata: Metadata = {
     "dental clinic",
     "wafi dental care",
   ],
+  alternates: {
+    canonical: "https://wafidentalcare.id",
+    languages: {
+      id: "https://wafidentalcare.id/id",
+      en: "https://wafidentalcare.id/en",
+    },
+  },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
@@ -41,7 +49,69 @@ export const metadata: Metadata = {
     title: "Wafi Dental Care — Tepat Tindakanya, Jelas Biayanya",
     description:
       "Klinik gigi profesional di Yogyakarta. Dokter berpengalaman, alat steril, layanan lengkap.",
+    url: "https://wafidentalcare.id",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Wafi Dental Care - Klinik Gigi Yogyakarta",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wafi Dental Care — Tepat Tindakanya, Jelas Biayanya",
+    description:
+      "Klinik gigi profesional di Yogyakarta. Dokter berpengalaman, alat steril, layanan lengkap.",
+    images: ["/og-image.png"],
+  },
+  verification: {
+    google: "google-site-verification-placeholder",
+  },
+  category: "Healthcare",
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  name: "Wafi Dental Care",
+  image: "https://wafidentalcare.id/logo.png",
+  "@id": "https://wafidentalcare.id",
+  url: "https://wafidentalcare.id",
+  telephone: "+628112345678",
+  priceRange: "Rp500,000 - Rp15,000,000",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Jl. Ring Road Utara No. 15",
+    addressLocality: "Sleman",
+    addressRegion: "DI Yogyakarta",
+    postalCode: "55281",
+    addressCountry: "ID",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -7.7582,
+    longitude: 110.3782,
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ],
+    opens: "08:00",
+    closes: "21:00",
+  },
+  sameAs: [
+    "https://instagram.com/wafidentalcare",
+    "https://facebook.com/wafidentalcare",
+  ],
 };
 
 export default function RootLayout({
@@ -50,7 +120,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className={`${inter.variable} ${jakarta.variable}`} suppressHydrationWarning>
+    <html
+      className={`${inter.variable} ${jakarta.variable}`}
+      lang="id"
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );

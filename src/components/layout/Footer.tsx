@@ -27,17 +27,7 @@ export function Footer() {
 
   return (
     <footer className="bg-gradient-to-b from-brand-800 to-brand-900 text-white">
-      {/* Wave Divider */}
-      <div className="relative h-16 overflow-hidden">
-        <svg
-          viewBox="0 0 1440 100"
-          className="absolute bottom-0 h-full w-full fill-white"
-        >
-          <path d="M0,64L80,58.7C160,53,320,43,480,48C640,53,800,75,960,74.7C1120,75,1280,53,1360,42.7L1440,32L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z" />
-        </svg>
-      </div>
-
-      <div className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8 pt-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">

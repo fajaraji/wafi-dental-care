@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "motion/react";
 
-export function CTASection({ t }: { t: (key: string) => string }) {
+export function CTASection() {
   const locale = useLocale();
+  const t = useTranslations("home");
 
   return (
     <section className="relative overflow-hidden py-28 sm:py-36">

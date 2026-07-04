@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "motion/react";
 
 const galleryCategories = [
@@ -37,12 +38,11 @@ const galleryCategories = [
 ];
 
 export function GalleryGrid({
-  t,
   isId,
 }: {
-  t: (key: string) => string;
   isId: boolean;
 }) {
+  const t = useTranslations("gallery");
   const [activeTab, setActiveTab] = useState("clinic");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 

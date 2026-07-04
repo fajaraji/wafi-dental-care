@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "motion/react";
 
-export function HeroSection({ t }: { t: (key: string) => string }) {
+export function HeroSection() {
   const locale = useLocale();
+  const t = useTranslations("home");
 
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden">

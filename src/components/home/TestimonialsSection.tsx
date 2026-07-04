@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 const dummyTestimonials = [
   {
@@ -33,7 +34,8 @@ const dummyTestimonials = [
   },
 ];
 
-export function TestimonialsSection({ t }: { t: (key: string) => string }) {
+export function TestimonialsSection() {
+  const t = useTranslations("home");
   return (
     <section className="py-20 sm:py-28 bg-gradient-to-b from-white to-brand-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

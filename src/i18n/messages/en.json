@@ -142,7 +142,7 @@
     "subtitle": "Professional, experienced, and certified dentists ready to provide the best care",
     "schedule": "Practice Schedule",
     "profile": "Profile",
-    "bookWith": "Book with {{name}}"
+    "bookWith": "Book with {name}"
   },
   "about": {
     "title": "About Wafi Dental Care",

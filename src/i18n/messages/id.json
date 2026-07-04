@@ -142,7 +142,7 @@
     "subtitle": "Dokter gigi profesional, berpengalaman, dan bersertifikasi yang siap memberikan perawatan terbaik",
     "schedule": "Jadwal Praktik",
     "profile": "Profil",
-    "bookWith": "Booking dengan {{name}}"
+    "bookWith": "Booking dengan {name}"
   },
   "about": {
     "title": "Tentang Wafi Dental Care",

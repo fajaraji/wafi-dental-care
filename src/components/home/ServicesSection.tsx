@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "motion/react";
 
 const dummyServices = [
@@ -63,9 +63,10 @@ function formatIDR(amount: number) {
   }).format(amount);
 }
 
-export function ServicesSection({ t }: { t: (key: string) => string }) {
+export function ServicesSection() {
   const locale = useLocale();
   const isId = locale === "id";
+  const t = useTranslations("home");
 
   return (
     <section className="py-20 sm:py-28 bg-surface-light">

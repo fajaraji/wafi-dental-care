@@ -12,13 +12,13 @@ export default async function HomePage() {
 
   return (
     <>
-      <HeroSection t={t} />
-      <USPSection t={t} />
-      <ServicesSection t={t} />
-      <DoctorsSection t={t} />
-      <TestimonialsSection t={t} />
+      <HeroSection />
+      <USPSection />
+      <ServicesSection />
+      <DoctorsSection />
+      <TestimonialsSection />
       <ClinicInfo />
-      <CTASection t={t} />
+      <CTASection />
     </>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 const uspItems = [
   {
@@ -37,7 +38,8 @@ const uspItems = [
   },
 ];
 
-export function USPSection({ t }: { t: (key: string) => string }) {
+export function USPSection() {
+  const t = useTranslations("home");
   return (
     <section className="relative -mt-16 z-20 py-8">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

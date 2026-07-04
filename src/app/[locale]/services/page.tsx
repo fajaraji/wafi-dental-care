@@ -30,7 +30,7 @@ export default async function ServicesPage() {
         </div>
       </section>
 
-      <ServicesGrid t={t} />
+      <ServicesGrid />
     </div>
   );
 }

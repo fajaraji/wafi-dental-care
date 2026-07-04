@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "motion/react";
 
 const dummyDoctors = [
@@ -39,9 +39,10 @@ const dummyDoctors = [
   },
 ];
 
-export function DoctorsSection({ t }: { t: (key: string) => string }) {
+export function DoctorsSection() {
   const locale = useLocale();
   const isId = locale === "id";
+  const t = useTranslations("home");
 
   return (
     <section className="py-20 sm:py-28 bg-white">

@@ -35,7 +35,7 @@ export default async function GalleryPage({
         </div>
       </section>
 
-      <GalleryGrid t={t} isId={locale === "id"} />
+      <GalleryGrid isId={locale === "id"} />
     </div>
   );
 }

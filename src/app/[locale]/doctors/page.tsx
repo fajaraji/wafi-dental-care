@@ -30,7 +30,7 @@ export default async function DoctorsPage() {
         </div>
       </section>
 
-      <DoctorsGrid t={t} />
+      <DoctorsGrid />
     </div>
   );
 }

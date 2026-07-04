@@ -6,8 +6,9 @@ import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "motion/react";
 import { getAllBlogPosts, getBlogCategories, formatDate } from "@/lib/utils/helpers";
 
-export function BlogList({ t }: { t: (key: string) => string }) {
+export function BlogList() {
   const locale = useLocale();
+  const t = useTranslations("blog");
   const ct = useTranslations("common");
   const isId = locale === "id";
   const posts = getAllBlogPosts();

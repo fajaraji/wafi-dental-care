@@ -5,8 +5,9 @@ import { useLocale, useTranslations } from "next-intl";
 import { motion } from "motion/react";
 import { getAllDoctors, dayNames } from "@/lib/utils/helpers";
 
-export function DoctorsGrid({ t }: { t: (key: string) => string }) {
+export function DoctorsGrid() {
   const locale = useLocale();
+  const t = useTranslations("doctors");
   const ct = useTranslations("common");
   const isId = locale === "id";
   const doctors = getAllDoctors();
@@ -52,7 +53,7 @@ export function DoctorsGrid({ t }: { t: (key: string) => string }) {
                     href={`/${locale}/booking`}
                     className="mt-4 inline-flex items-center gap-2 rounded-lg bg-brand-50 px-5 py-2.5 text-sm font-semibold text-brand-600 transition-all duration-300 hover:bg-brand-600 hover:text-white"
                   >
-                    {t("bookWith").replace("{{name}}", doctor.name.split(",")[0])}
+                    {t("bookWith", { name: doctor.name.split(",")[0] })}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 12h14m-6-6l6 6-6 6" />
                     </svg>

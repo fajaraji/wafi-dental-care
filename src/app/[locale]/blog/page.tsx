@@ -30,7 +30,7 @@ export default async function BlogPage() {
         </div>
       </section>
 
-      <BlogList t={t} />
+      <BlogList />
     </div>
   );
 }

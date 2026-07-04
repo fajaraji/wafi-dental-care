@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 const values = [
   { key: "value1", color: "from-brand-600 to-brand-700" },
@@ -18,7 +19,8 @@ const facilities = [
   { key: "facility6", icon: "👨‍⚕️" },
 ];
 
-export function AboutContent({ t }: { t: (key: string) => string }) {
+export function AboutContent() {
+  const t = useTranslations("about");
   return (
     <>
       {/* Story Section */}

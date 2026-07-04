@@ -30,7 +30,7 @@ export default async function TestimonialsPage() {
         </div>
       </section>
 
-      <TestimonialsList t={t} />
+      <TestimonialsList />
     </div>
   );
 }

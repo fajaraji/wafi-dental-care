@@ -6,8 +6,9 @@ import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "motion/react";
 import { getAllServices, getServiceCategories, formatIDR } from "@/lib/utils/helpers";
 
-export function ServicesGrid({ t }: { t: (key: string) => string }) {
+export function ServicesGrid() {
   const locale = useLocale();
+  const t = useTranslations("services");
   const ct = useTranslations("common");
   const isId = locale === "id";
   const services = getAllServices();

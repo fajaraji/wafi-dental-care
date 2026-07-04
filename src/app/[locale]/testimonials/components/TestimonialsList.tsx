@@ -1,13 +1,14 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { motion } from "motion/react";
 import { getAllTestimonials, formatDate } from "@/lib/utils/helpers";
 
-export function TestimonialsList({ t }: { t: (key: string) => string }) {
+export function TestimonialsList() {
   const locale = useLocale();
   const isId = locale === "id";
   const testimonials = getAllTestimonials();
+  const t = useTranslations("testimonials");
 
   return (
     <section className="py-20 bg-white">
