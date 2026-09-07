@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { BlogList } from "./components/BlogList";
+import { getPublishedBlogPosts, getBlogCategoriesFromDb } from "@/lib/db/queries";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -12,6 +13,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function BlogPage() {
   const t = await getTranslations("blog");
+  const posts = await getPublishedBlogPosts();
+  const categories = await getBlogCategoriesFromDb();
 
   return (
     <div className="min-h-screen">
@@ -30,7 +33,7 @@ export default async function BlogPage() {
         </div>
       </section>
 
-      <BlogList />
+      <BlogList posts={posts} categories={categories} />
     </div>
   );
 }

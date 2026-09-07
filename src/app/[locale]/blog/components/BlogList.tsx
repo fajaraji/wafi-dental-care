@@ -4,15 +4,20 @@ import { useState } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "motion/react";
-import { getAllBlogPosts, getBlogCategories, formatDate } from "@/lib/utils/helpers";
+import { formatDate } from "@/lib/utils/helpers";
+import type { BlogPost } from "@/lib/db/queries";
 
-export function BlogList() {
+export function BlogList({
+  posts,
+  categories,
+}: {
+  posts: BlogPost[];
+  categories: string[];
+}) {
   const locale = useLocale();
   const t = useTranslations("blog");
   const ct = useTranslations("common");
   const isId = locale === "id";
-  const posts = getAllBlogPosts();
-  const categories = getBlogCategories();
   const [activeCategory, setActiveCategory] = useState<string>("");
 
   const filtered = activeCategory

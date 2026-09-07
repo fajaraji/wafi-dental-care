@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { getBlogPostBySlug, getAllBlogPosts, formatDate } from "@/lib/utils/helpers";
+import { formatDate } from "@/lib/utils/helpers";
+import { getBlogPostBySlugFromDb, getPublishedBlogPosts } from "@/lib/db/queries";
 
 export async function generateMetadata({
   params,
@@ -10,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = await getBlogPostBySlugFromDb(slug);
   if (!post) return { title: "Artikel Tidak Ditemukan | Wafi Dental Care" };
 
   const isId = locale === "id";
@@ -29,14 +30,14 @@ export default async function BlogDetailPage({
   const t = await getTranslations("blog");
   const ct = await getTranslations("common");
   const isId = locale === "id";
-  const post = getBlogPostBySlug(slug);
+  const post = await getBlogPostBySlugFromDb(slug);
 
   if (!post) notFound();
 
   const content = isId ? post.contentId : post.contentEn;
   const paragraphs = content?.split("\n\n").filter(Boolean) ?? [];
 
-  const relatedPosts = getAllBlogPosts()
+  const relatedPosts = (await getPublishedBlogPosts())
     .filter((p) => p.id !== post.id && p.categoryId === post.categoryId)
     .slice(0, 3);
 
