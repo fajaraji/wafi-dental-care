@@ -45,39 +45,37 @@ export function DoctorsSection() {
   const t = useTranslations("home");
 
   return (
-    <section className="py-20 sm:py-28 bg-white">
+    <section className="py-20 sm:py-28 bg-surface-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block rounded-full bg-brand-100 px-4 py-1.5 text-sm font-semibold text-brand-700">
-            Tim Profesional
-          </span>
-          <h2 className="mt-4 font-display text-3xl font-extrabold text-text-primary sm:text-4xl lg:text-5xl">
-            {t("doctors.title")}
-          </h2>
-          <p className="mt-4 mx-auto max-w-2xl text-lg text-text-muted">
+        <div className="flex flex-wrap items-end justify-between gap-6 mb-16">
+          <div className="max-w-xl">
+            <p className="eyebrow flex items-center gap-3">
+              <span className="hairline w-10" />
+              Tim Profesional
+            </p>
+            <h2 className="mt-5 font-display text-4xl font-medium leading-tight text-brand-800 sm:text-5xl">
+              {t("doctors.title")}
+            </h2>
+          </div>
+          <p className="max-w-sm text-text-muted">
             {t("doctors.subtitle")}
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {dummyDoctors.map((doctor, index) => (
             <motion.div
               key={doctor.id}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 0.6 }}
-              className="group text-center"
+              transition={{ duration: 0.45, delay: index * 0.08 }}
+              className="group"
             >
-              {/* Photo */}
-              <div className="relative mx-auto mb-5 h-48 w-48 overflow-hidden rounded-3xl bg-gradient-to-br from-brand-100 to-accent-100 shadow-lg">
+              {/* Portrait */}
+              <div className="relative aspect-square overflow-hidden bg-surface-light">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <svg viewBox="0 0 80 80" className="h-20 w-20 text-brand-300">
+                  <svg viewBox="0 0 80 80" className="h-20 w-20 text-brand-200">
                     <circle cx="40" cy="28" r="16" fill="currentColor" />
                     <ellipse cx="40" cy="70" rx="28" ry="18" fill="currentColor" />
                   </svg>
@@ -90,19 +88,16 @@ export function DoctorsSection() {
                     e.currentTarget.style.display = "none";
                   }}
                 />
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-600/80 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end justify-center pb-4">
-                  <span className="text-white text-sm font-semibold">Lihat Profil</span>
-                </div>
+                <div className="absolute inset-0 border border-brand-600/10 transition-colors duration-300 group-hover:border-gold-500/50" />
               </div>
 
-              <h3 className="text-lg font-bold text-text-primary font-display">
+              <h3 className="mt-6 font-display text-xl font-medium text-brand-800">
                 {doctor.name}
               </h3>
-              <p className="mt-1 text-sm font-medium text-accent-600">
+              <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-gold-600">
                 {isId ? doctor.specialtyId : doctor.specialtyEn}
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-text-muted line-clamp-3">
+              <p className="mt-3 text-sm leading-relaxed text-text-muted line-clamp-3">
                 {doctor.bioId}
               </p>
             </motion.div>

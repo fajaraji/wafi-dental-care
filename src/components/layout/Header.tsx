@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
@@ -20,117 +20,79 @@ export function Header() {
   const ct = useTranslations("common");
   const locale = useLocale();
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const switchLocale = locale === "id" ? "en" : "id";
   const switchPath = pathname.replace(`/${locale}`, `/${switchLocale}`);
 
+  const isActive = (href: string) =>
+    pathname === `/${locale}${href === "/" ? "" : href}`;
+
   return (
-    <header
-      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
-        isScrolled
-          ? "glass shadow-lg shadow-brand-600/10"
-          : "bg-transparent"
-      }`}
-    >
+    <header className="fixed top-0 z-50 w-full glass">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
+        <div className="flex h-18 items-center justify-between">
           {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center gap-3 group">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-accent-500 shadow-lg shadow-brand-600/30 transition-transform duration-300 group-hover:scale-110">
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="text-white"
-              >
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                  fill="currentColor"
-                />
-              </svg>
+          <Link href={`/${locale}`} className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center border border-brand-600/30 bg-brand-600/5">
+              <span className="font-display text-lg font-bold text-brand-600">W</span>
             </div>
-            <span
-              className={`text-lg font-bold font-display transition-colors duration-300 ${
-                isScrolled ? "text-brand-600" : "text-white"
-              }`}
-            >
-              {ct("logo")}
+            <span className="font-display text-xl font-semibold tracking-tight text-brand-700">
+              Wafi Dental Care
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav className="hidden items-center gap-7 lg:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.key}
                 href={`/${locale}${link.href === "/" ? "" : link.href}`}
-                className={`rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ${
-                  pathname === `/${locale}${link.href === "/" ? "" : link.href}`
-                    ? isScrolled
-                      ? "bg-brand-50 text-brand-600"
-                      : "bg-white/20 text-white backdrop-blur-sm"
-                    : isScrolled
-                    ? "text-text-secondary hover:bg-brand-50 hover:text-brand-600"
-                    : "text-white/90 hover:bg-white/10 hover:text-white"
+                className={`relative text-sm font-medium transition-colors duration-200 ${
+                  isActive(link.href)
+                    ? "text-brand-600"
+                    : "text-text-secondary hover:text-brand-600"
                 }`}
               >
                 {t(link.key)}
+                <span
+                  className={`absolute -bottom-1 left-0 h-px bg-gold-500 transition-all duration-300 ${
+                    isActive(link.href) ? "w-full" : "w-0"
+                  }`}
+                />
               </Link>
             ))}
 
             {/* Language Toggle */}
             <Link
               href={switchPath}
-              className={`ml-2 flex items-center gap-1 rounded-lg px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
-                isScrolled
-                  ? "bg-accent-50 text-accent-600 hover:bg-accent-100"
-                  : "bg-white/20 text-white hover:bg-white/30"
-              }`}
+              className="text-xs font-semibold uppercase tracking-widest text-text-muted transition-colors hover:text-brand-600"
             >
               {ct(switchLocale)}
             </Link>
 
-            {/* CTA */}
-            <Link
-              href={`/${locale}/booking`}
-              className="ml-3 rounded-xl bg-gradient-to-r from-brand-600 to-accent-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition-all duration-300 hover:shadow-xl hover:shadow-brand-600/40 hover:scale-105"
-            >
+            <Link href={`/${locale}/booking`} className="btn-primary">
               {ct("bookNow")}
             </Link>
           </nav>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Toggle */}
           <button
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className={`flex flex-col gap-1.5 lg:hidden p-2 ${
-              isScrolled ? "text-brand-600" : "text-white"
-            }`}
+            className="flex flex-col gap-1.5 p-2 text-brand-700 lg:hidden"
             aria-label="Toggle menu"
           >
             <motion.span
-              animate={
-                isMobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }
-              }
-              className="block h-0.5 w-6 bg-current transition-colors"
+              animate={isMobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+              className="block h-0.5 w-6 bg-current"
             />
             <motion.span
               animate={isMobileOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="block h-0.5 w-6 bg-current transition-colors"
+              className="block h-0.5 w-6 bg-current"
             />
             <motion.span
-              animate={
-                isMobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }
-              }
-              className="block h-0.5 w-6 bg-current transition-colors"
+              animate={isMobileOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+              className="block h-0.5 w-6 bg-current"
             />
           </button>
         </div>
@@ -143,34 +105,34 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="glass border-t border-white/20 lg:hidden"
+            className="border-t border-brand-600/10 bg-white lg:hidden"
           >
-            <div className="space-y-1 px-4 py-4">
+            <div className="space-y-1 px-6 py-5">
               {navLinks.map((link) => (
                 <Link
                   key={link.key}
                   href={`/${locale}${link.href === "/" ? "" : link.href}`}
                   onClick={() => setIsMobileOpen(false)}
-                  className={`block rounded-lg px-4 py-3 text-sm font-medium transition-colors ${
-                    pathname === `/${locale}${link.href === "/" ? "" : link.href}`
-                      ? "bg-brand-50 text-brand-600"
-                      : "text-text-secondary hover:bg-brand-50 hover:text-brand-600"
+                  className={`block border-b border-brand-600/5 py-3 font-display text-lg transition-colors ${
+                    isActive(link.href)
+                      ? "text-brand-600"
+                      : "text-text-secondary hover:text-brand-600"
                   }`}
                 >
                   {t(link.key)}
                 </Link>
               ))}
-              <div className="flex items-center gap-3 pt-3">
+              <div className="flex items-center gap-3 pt-5">
                 <Link
                   href={switchPath}
-                  className="rounded-lg bg-accent-50 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-accent-600"
+                  className="text-xs font-semibold uppercase tracking-widest text-text-muted"
                 >
                   {ct(switchLocale)}
                 </Link>
                 <Link
                   href={`/${locale}/booking`}
                   onClick={() => setIsMobileOpen(false)}
-                  className="flex-1 rounded-xl bg-gradient-to-r from-brand-600 to-accent-500 px-5 py-2.5 text-center text-sm font-semibold text-white"
+                  className="flex-1 rounded-full bg-ink px-5 py-3 text-center text-sm font-semibold text-white"
                 >
                   {ct("bookNow")}
                 </Link>

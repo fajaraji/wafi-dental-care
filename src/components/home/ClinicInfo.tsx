@@ -14,36 +14,37 @@ const workingDays = [
 
 export function ClinicInfo() {
   return (
-    <section className="py-20 sm:py-28 bg-surface-light">
+    <section className="py-20 sm:py-28 bg-surface-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-2">
           {/* Map & Address */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <span className="inline-block rounded-full bg-brand-100 px-4 py-1.5 text-sm font-semibold text-brand-700 mb-4">
+            <p className="eyebrow flex items-center gap-3">
+              <span className="hairline w-10" />
               Lokasi Kami
-            </span>
-            <h2 className="font-display text-3xl font-extrabold text-text-primary sm:text-4xl">
-              Sangat Strategis & Mudah Diakses
+            </p>
+            <h2 className="mt-4 font-display text-4xl font-medium leading-tight text-brand-800">
+              Sangat Strategis &amp; Mudah Diakses
             </h2>
-            <p className="mt-3 text-lg text-text-muted">
+            <p className="mt-3 text-text-muted">
               Dekat dari Kampus UPN, FBE UII, Amikom, dan Pakuwon Mall
             </p>
 
             {/* Address Card */}
-            <div className="mt-6 rounded-2xl bg-white p-6 shadow-md">
+            <div className="mt-6 border border-brand-600/10 bg-paper p-6">
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-600 to-accent-500 text-white shadow-lg">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-brand-600/25 text-brand-600">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-text-primary">Wafi Dental Care</h3>
+                  <h3 className="font-display text-lg font-medium text-brand-800">Wafi Dental Care</h3>
                   <p className="mt-1 text-text-muted leading-relaxed">
                     Jl Nusa Indah No 233H<br />
                     Condongcatur, Depok, Sleman<br />
@@ -53,7 +54,7 @@ export function ClinicInfo() {
                     href="https://maps.app.goo.gl/3tAWSV5JY7nrmVPA6"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-accent-600 hover:text-accent-700"
+                    className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-gold-600"
                   >
                     Buka di Google Maps
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -82,36 +83,37 @@ export function ClinicInfo() {
 
           {/* Operating Hours */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <span className="inline-block rounded-full bg-accent-100 px-4 py-1.5 text-sm font-semibold text-accent-700 mb-4">
+            <p className="eyebrow flex items-center gap-3">
+              <span className="hairline w-10" />
               Jam Praktik
-            </span>
-            <h2 className="font-display text-3xl font-extrabold text-text-primary sm:text-4xl">
+            </p>
+            <h2 className="mt-4 font-display text-4xl font-medium leading-tight text-brand-800">
               Buka Setiap Hari
             </h2>
-            <p className="mt-3 text-lg text-text-muted">
+            <p className="mt-3 text-text-muted">
               Melayani pasien 7 hari seminggu dengan jam praktik yang panjang
             </p>
 
             {/* Hours Table */}
-            <div className="mt-6 overflow-hidden rounded-2xl bg-white shadow-md">
-              <div className="divide-y divide-gray-100">
+            <div className="mt-6 overflow-hidden border border-brand-600/10 bg-paper">
+              <div className="divide-y divide-brand-600/8">
                 {workingDays.map((schedule, index) => (
                   <div
                     key={index}
                     className={`flex items-center justify-between px-6 py-4 ${
                       index === new Date().getDay() - 1
-                        ? "bg-brand-50 border-l-4 border-accent-500"
+                        ? "bg-brand-50 border-l-2 border-gold-500"
                         : ""
                     }`}
                   >
                     <span className="text-sm font-medium text-text-secondary">
                       {schedule.day}
                     </span>
-                    <span className="text-sm font-bold text-brand-600">
+                    <span className="text-sm font-semibold text-brand-700">
                       {schedule.time}
                     </span>
                   </div>
@@ -121,7 +123,7 @@ export function ClinicInfo() {
 
             {/* Nearby Landmarks */}
             <div className="mt-8">
-              <h3 className="text-lg font-bold text-text-primary font-display mb-4">
+              <h3 className="font-display text-lg font-medium text-brand-800 mb-4">
                 Dekat Dengan:
               </h3>
               <div className="grid grid-cols-2 gap-3">
@@ -133,19 +135,9 @@ export function ClinicInfo() {
                 ].map((place) => (
                   <div
                     key={place}
-                    className="flex items-center gap-2 rounded-xl bg-white p-3 shadow-sm"
+                    className="flex items-center gap-3 border border-brand-600/10 bg-paper px-4 py-3"
                   >
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      className="text-accent-500 flex-shrink-0"
-                    >
-                      <path d="M5 12h14m-7-7l7 7-7 7" />
-                    </svg>
+                    <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gold-500" />
                     <span className="text-sm font-medium text-text-secondary">
                       {place}
                     </span>

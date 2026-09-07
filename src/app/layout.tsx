@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,7 +8,7 @@ const inter = Inter({
   display: "swap",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const playfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
@@ -121,7 +121,7 @@ export default function RootLayout({
 }) {
   return (
     <html
-      className={`${inter.variable} ${jakarta.variable}`}
+      className={`${inter.variable} ${playfair.variable}`}
       lang="id"
       suppressHydrationWarning
     >
