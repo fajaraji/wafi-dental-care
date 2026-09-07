@@ -78,7 +78,7 @@ export default function BookingSuccessPage() {
                 {t("backToHome")}
               </Link>
               <a
-                href={`https://wa.me/628112345678?text=Halo%20Wafi%20Dental%20Care%2C%20saya%20baru%20melakukan%20booking%20dengan%20kode%20${orderId}`}
+                href={`https://wa.me/6287726652023?text=Halo%20Wafi%20Dental%20Care%2C%20saya%20baru%20melakukan%20booking%20dengan%20kode%20${orderId}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-xl bg-green-500 px-8 py-3 text-sm font-bold text-white shadow-lg shadow-green-500/25 transition-all duration-300 hover:scale-105 hover:shadow-xl inline-flex items-center justify-center gap-2"

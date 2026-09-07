@@ -79,14 +79,14 @@ const jsonLd = {
   image: "https://wafidentalcare.id/logo.png",
   "@id": "https://wafidentalcare.id",
   url: "https://wafidentalcare.id",
-  telephone: "+628112345678",
+  telephone: "+6287726652023",
   priceRange: "Rp500,000 - Rp15,000,000",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Jl. Ring Road Utara No. 15",
+    streetAddress: "Jl. Nusa Indah No. 233H, Condongcatur",
     addressLocality: "Sleman",
     addressRegion: "DI Yogyakarta",
-    postalCode: "55281",
+    postalCode: "55283",
     addressCountry: "ID",
   },
   geo: {
