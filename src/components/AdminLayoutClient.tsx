@@ -10,6 +10,7 @@ const menuItems = [
   { href: "/admin/patients", label: "Pasien", icon: "👥" },
   { href: "/admin/doctors", label: "Dokter", icon: "🩺" },
   { href: "/admin/services", label: "Layanan", icon: "🦷" },
+  { href: "/admin/blog", label: "Blog", icon: "📝" },
   { href: "/admin/messages", label: "Pesan", icon: "✉️" },
 ];
 
