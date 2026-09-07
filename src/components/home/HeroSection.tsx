@@ -8,7 +8,7 @@ export function HeroSection() {
   const t = useTranslations("home");
 
   return (
-    <section className="relative flex min-h-[88vh] items-center overflow-hidden">
+    <section className="relative overflow-hidden pt-36 pb-16 lg:pt-40 lg:pb-20">
       {/* Background image */}
       <img
         src="/images/home/hero-clinic.jpg"
@@ -19,7 +19,7 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/75" />
       <div className="absolute inset-0 bg-brand-900/30 mix-blend-multiply" />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 lg:py-24 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="eyebrow-dark flex items-center gap-3">
             <span className="hairline w-10" />
