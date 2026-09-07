@@ -52,7 +52,7 @@ export function AboutContent() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="aspect-[4/3] rounded-3xl bg-gradient-to-br from-brand-100 via-accent-100 to-brand-50 shadow-xl overflow-hidden">
+              <div className="relative aspect-[4/3] rounded-3xl bg-gradient-to-br from-brand-100 via-accent-100 to-brand-50 shadow-xl overflow-hidden">
                 <div className="flex h-full items-center justify-center">
                   <svg viewBox="0 0 200 120" className="w-48 h-auto text-brand-200">
                     <path d="M100 20c-25 0-47 13-58 33C30 68 20 92 20 112c0 14 10 8 23 8l7-14c3-7 10-3 17-3 5 0 8 7 8 14v14c0 9 8-1 17-1s17 1 17-1V90c0-7 3-14 8-14 7 0 14-4 17 3l7 14c3 0 23 6 23-8 0-20-10-44-22-63C189 33 167 20 142 20H100z" fill="currentColor" />
@@ -60,6 +60,14 @@ export function AboutContent() {
                     <text x="100" y="85" textAnchor="middle" fill="currentColor" fontSize="12" fontWeight="bold" opacity="0.8">#OnPointDentist</text>
                   </svg>
                 </div>
+                <img
+                  src="/images/about/clinic.svg"
+                  alt="Wafi Dental Care Clinic"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
               </div>
               {/* Decorative element */}
               <div className="absolute -bottom-6 -right-6 h-32 w-32 rounded-2xl bg-gradient-to-br from-accent-400 to-brand-600 opacity-20 blur-xl -z-10" />
