@@ -25,11 +25,11 @@ export function DoctorsGrid() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="group"
             >
-              <div className="grid gap-8 md:grid-cols-[200px,1fr] lg:grid-cols-[240px,1fr,280px]">
+              <div className="grid gap-8 md:grid-cols-[200px,1fr] lg:grid-cols-[200px,1fr,280px]">
                 {/* Photo */}
-                <div className="relative aspect-square overflow-hidden bg-surface-light">
+                <div className="relative mx-auto h-48 w-40 overflow-hidden bg-surface-light lg:h-52 lg:w-44">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <svg viewBox="0 0 80 80" className="h-24 w-24 text-brand-200">
+                    <svg viewBox="0 0 80 80" className="h-20 w-20 text-brand-200">
                       <circle cx="40" cy="28" r="16" fill="currentColor" />
                       <ellipse cx="40" cy="70" rx="28" ry="18" fill="currentColor" />
                     </svg>
@@ -37,7 +37,7 @@ export function DoctorsGrid() {
                   <img
                     src={doctor.photo}
                     alt={doctor.name}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="absolute inset-0 h-full w-full object-cover object-top"
                     onError={(e) => {
                       e.currentTarget.style.display = "none";
                     }}

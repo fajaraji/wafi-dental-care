@@ -34,6 +34,10 @@ export function HeroSection() {
             {t("hero.subtitle")}
           </p>
 
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70">
+            {t("hero.description")}
+          </p>
+
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link href={`/${locale}/booking`} className="btn-light">
               {t("hero.cta")}
