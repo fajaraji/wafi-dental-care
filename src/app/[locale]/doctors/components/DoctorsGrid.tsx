@@ -25,9 +25,9 @@ export function DoctorsGrid() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="group"
             >
-              <div className="grid grid-cols-[110px,1fr] gap-5 sm:grid-cols-[180px,1fr] sm:gap-6 lg:grid-cols-[180px,1fr,280px]">
+              <div className="flex flex-col gap-6 sm:flex-row sm:gap-8">
                 {/* Photo */}
-                <div className="relative h-40 w-full overflow-hidden bg-surface-light sm:h-48 sm:w-40 lg:h-52 lg:w-44">
+                <div className="relative h-40 w-32 flex-shrink-0 overflow-hidden bg-surface-light sm:h-52 sm:w-40 lg:h-56 lg:w-44">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <svg viewBox="0 0 80 80" className="h-20 w-20 text-brand-200">
                       <circle cx="40" cy="28" r="16" fill="currentColor" />
@@ -45,12 +45,12 @@ export function DoctorsGrid() {
                   <div className="absolute inset-0 border border-brand-600/10" />
                 </div>
 
-                {/* Bio */}
-                <div>
-                  <h2 className="text-2xl font-bold text-text-primary font-display">
+                {/* Bio + Schedule */}
+                <div className="min-w-0 flex-1">
+                  <h2 className="font-display text-2xl font-medium text-brand-800">
                     {doctor.name}
                   </h2>
-                  <p className="mt-1 text-base font-semibold text-accent-600">
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-gold-600">
                     {isId ? doctor.titleId : doctor.titleEn}
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-text-secondary">
@@ -59,35 +59,34 @@ export function DoctorsGrid() {
 
                   <Link
                     href={`/${locale}/booking`}
-                    className="mt-4 inline-flex items-center gap-2 rounded-lg bg-brand-50 px-5 py-2.5 text-sm font-semibold text-brand-600 transition-all duration-300 hover:bg-brand-600 hover:text-white"
+                    className="mt-4 inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
                   >
                     {t("bookWith", { name: doctor.name.split(",")[0] })}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M5 12h14m-6-6l6 6-6 6" />
                     </svg>
                   </Link>
-                </div>
 
-                {/* Schedule */}
-                <div className="border border-brand-600/10 bg-paper p-5">
-                  <h3 className="text-xs font-semibold uppercase tracking-widest text-gold-600 mb-3">
-                    {t("schedule")}
-                  </h3>
-                  <ul className="space-y-1.5">
-                    {doctor.schedules.map((s, i) => (
-                      <li
-                        key={i}
-                        className="flex items-center justify-between text-sm"
-                      >
-                        <span className="text-text-secondary font-medium min-w-[100px]">
-                          {dayNames[isId ? "id" : "en"][s.dayOfWeek]}
-                        </span>
-                        <span className="text-brand-600 font-semibold tabular-nums">
-                          {s.startTime} – {s.endTime}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="mt-8 border border-brand-600/10 bg-paper p-5">
+                    <h3 className="text-xs font-semibold uppercase tracking-widest text-gold-600 mb-3">
+                      {t("schedule")}
+                    </h3>
+                    <ul className="space-y-1.5">
+                      {doctor.schedules.map((s, i) => (
+                        <li
+                          key={i}
+                          className="flex items-center justify-between text-sm"
+                        >
+                          <span className="text-text-secondary font-medium min-w-[100px]">
+                            {dayNames[isId ? "id" : "en"][s.dayOfWeek]}
+                          </span>
+                          <span className="text-brand-600 font-semibold tabular-nums">
+                            {s.startTime} – {s.endTime}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
 
