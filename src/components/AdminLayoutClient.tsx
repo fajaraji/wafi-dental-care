@@ -11,6 +11,7 @@ const menuItems = [
   { href: "/admin/doctors", label: "Dokter", icon: "🩺" },
   { href: "/admin/services", label: "Layanan", icon: "🦷" },
   { href: "/admin/blog", label: "Blog", icon: "📝" },
+  { href: "/admin/reports", label: "Laporan", icon: "📈" },
   { href: "/admin/messages", label: "Pesan", icon: "✉️" },
 ];
 
