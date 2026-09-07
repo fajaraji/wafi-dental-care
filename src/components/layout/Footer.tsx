@@ -30,8 +30,8 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href={`/${locale}`} className="inline-block bg-white p-2.5 mb-4">
-              <img src="/logo.png" alt="Wafi Dental Care" className="h-8 w-auto" />
+            <Link href={`/${locale}`} className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-white p-2.5">
+              <img src="/logo.png" alt="Wafi Dental Care" className="h-9 w-auto" />
             </Link>
             <p className="text-sm leading-relaxed text-white/70 max-w-sm">
               {t("about")}
