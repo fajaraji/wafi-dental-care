@@ -8,69 +8,63 @@ export function HeroSection() {
   const t = useTranslations("home");
 
   return (
-    <section className="relative overflow-hidden bg-paper pt-28 pb-20 lg:pt-36 lg:pb-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-14 lg:grid-cols-2">
-          {/* Text */}
-          <div className="max-w-xl">
-            <p className="eyebrow flex items-center gap-3">
-              <span className="hairline w-10" />
-              {t("hero.tagline")}
-            </p>
+    <section className="relative flex min-h-[88vh] items-center overflow-hidden">
+      {/* Background image */}
+      <img
+        src="/images/home/hero-clinic.jpg"
+        alt="Wafi Dental Care Clinic"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/75" />
+      <div className="absolute inset-0 bg-brand-900/30 mix-blend-multiply" />
 
-            <h1 className="mt-6 font-display text-5xl font-medium leading-[1.05] tracking-tight text-brand-800 sm:text-6xl lg:text-7xl">
-              {t("hero.title")}
-            </h1>
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-32 sm:px-6 lg:px-8">
+        <div className="max-w-2xl">
+          <p className="eyebrow-dark flex items-center gap-3">
+            <span className="hairline w-10" />
+            {t("hero.tagline")}
+          </p>
 
-            <p className="mt-6 text-lg leading-relaxed text-text-secondary">
-              {t("hero.subtitle")}
-            </p>
+          <h1 className="mt-6 font-display text-5xl font-medium leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            {t("hero.title")}
+          </h1>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <Link href={`/${locale}/booking`} className="btn-primary">
-                {t("hero.cta")}
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14m-6-6l6 6-6 6" />
-                </svg>
-              </Link>
-              <Link href={`/${locale}/services`} className="btn-ghost">
-                Lihat Layanan
-              </Link>
-            </div>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
+            {t("hero.subtitle")}
+          </p>
 
-            {/* Stats */}
-            <div className="mt-14 grid max-w-md grid-cols-3 divide-x divide-brand-600/15">
-              {[
-                { num: "17+", label: "Layanan Gigi" },
-                { num: "10+", label: "Tahun Pengalaman" },
-                { num: "5000+", label: "Pasien Puas" },
-              ].map((stat) => (
-                <div key={stat.label} className="px-5 first:pl-0">
-                  <div className="font-display text-3xl font-semibold text-brand-700">
-                    {stat.num}
-                  </div>
-                  <div className="mt-1 text-xs uppercase tracking-wider text-text-muted">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <Link href={`/${locale}/booking`} className="btn-light">
+              {t("hero.cta")}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14m-6-6l6 6-6 6" />
+              </svg>
+            </Link>
+            <Link
+              href={`/${locale}/services`}
+              className="inline-flex items-center gap-2 rounded-full border border-white/40 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/80 hover:bg-white/10"
+            >
+              Lihat Layanan
+            </Link>
           </div>
 
-          {/* Visual */}
-          <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-            <div className="absolute -right-6 -top-6 h-28 w-28 border border-gold-400/60" />
-            <div className="relative overflow-hidden">
-              <img
-                src="/images/home/hero-clinic.jpg"
-                alt="Wafi Dental Care Clinic"
-                className="h-full w-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                }}
-              />
-            </div>
-            <div className="absolute -bottom-5 -left-5 h-24 w-24 bg-gold-500/15" />
+          {/* Stats */}
+          <div className="mt-14 grid max-w-md grid-cols-3 divide-x divide-white/20">
+            {[
+              { num: "17+", label: "Layanan Gigi" },
+              { num: "10+", label: "Tahun Pengalaman" },
+              { num: "5000+", label: "Pasien Puas" },
+            ].map((stat) => (
+              <div key={stat.label} className="px-5 first:pl-0">
+                <div className="font-display text-3xl font-semibold text-white">
+                  {stat.num}
+                </div>
+                <div className="mt-1 text-xs uppercase tracking-wider text-white/60">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

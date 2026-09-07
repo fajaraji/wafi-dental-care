@@ -1,49 +1,53 @@
 @import "tailwindcss";
 
-/* ─── Wafi Dental Care — Editorial Design Tokens ─── */
+/* ─── Wafi Dental Care — Editorial Design Tokens ───
+   Colors extracted from public/logo.png:
+   - Dark olive #4B4842 (primary, dominant)
+   - Lime green #A9CD0A (accent)
+   - Charcoal #303030 (ink)                       */
 
 @theme {
-  /* Brand Colors */
-  --color-brand-50: #eef2f8;
-  --color-brand-100: #d9e2ef;
-  --color-brand-200: #b3c5de;
-  --color-brand-300: #86a1c6;
-  --color-brand-400: #5a7eac;
-  --color-brand-500: #2c4e7d;
-  --color-brand-600: #1B3A6B;
-  --color-brand-700: #162f57;
-  --color-brand-800: #122747;
-  --color-brand-900: #0c1c36;
+  /* Brand — dark olive */
+  --color-brand-50: #f3f2ee;
+  --color-brand-100: #e3e1d8;
+  --color-brand-200: #c6c2b4;
+  --color-brand-300: #a5a08d;
+  --color-brand-400: #7f7a67;
+  --color-brand-500: #6b6755;
+  --color-brand-600: #5c5848;
+  --color-brand-700: #4B4842;
+  --color-brand-800: #3a3833;
+  --color-brand-900: #2b2a26;
 
-  /* Accent — Teal/Cyan */
-  --color-accent-50: #e6f6f7;
-  --color-accent-100: #c9ebee;
-  --color-accent-200: #99dbe1;
-  --color-accent-300: #66c8d1;
-  --color-accent-400: #33b6c1;
-  --color-accent-500: #00A8B5;
-  --color-accent-600: #008e99;
-  --color-accent-700: #00737d;
-  --color-accent-800: #00575f;
-  --color-accent-900: #003b41;
+  /* Accent — lime green */
+  --color-accent-50: #f5f9de;
+  --color-accent-100: #e8f2b3;
+  --color-accent-200: #d8e983;
+  --color-accent-300: #c7e04e;
+  --color-accent-400: #b6d623;
+  --color-accent-500: #A9CD0A;
+  --color-accent-600: #8fb200;
+  --color-accent-700: #788f05;
+  --color-accent-800: #5e6f0e;
+  --color-accent-900: #485213;
 
-  /* Gold — refined premium accent */
-  --color-gold-300: #dcc39a;
-  --color-gold-400: #cdae7a;
-  --color-gold-500: #C2A878;
-  --color-gold-600: #a98f5d;
+  /* Gold — lime-derived premium accent */
+  --color-gold-300: #c9dc5a;
+  --color-gold-400: #b9d02e;
+  --color-gold-500: #A9CD0A;
+  --color-gold-600: #8fb200;
 
   /* Surfaces */
-  --color-paper: #FBF9F4;
-  --color-surface-light: #F5F6F8;
-  --color-surface-white: #FFFFFF;
-  --color-ink: #101A2C;
+  --color-paper: #fbf9f3;
+  --color-surface-light: #f2f0e8;
+  --color-surface-white: #ffffff;
+  --color-ink: #2c2b27;
 
   /* Text */
-  --color-text-primary: #1B3A6B;
-  --color-text-secondary: #3A4659;
-  --color-text-muted: #6B7686;
-  --color-text-light: #F7FAFC;
+  --color-text-primary: #4b4842;
+  --color-text-secondary: #56534a;
+  --color-text-muted: #797565;
+  --color-text-light: #f7f6f0;
 
   /* Fonts */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -112,7 +116,7 @@ body {
   transition: background 0.25s ease, transform 0.25s ease;
 }
 .btn-primary:hover {
-  background: var(--color-brand-600);
+  background: var(--color-brand-700);
   transform: translateY(-1px);
 }
 
@@ -132,7 +136,7 @@ body {
 .btn-ghost:hover {
   border-color: var(--color-brand-600);
   color: var(--color-brand-600);
-  background: rgba(27, 58, 107, 0.04);
+  background: rgba(75, 72, 66, 0.05);
 }
 
 .btn-light {
@@ -154,10 +158,10 @@ body {
 
 /* ─── Glass ─── */
 .glass {
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(27, 58, 107, 0.08);
+  border-bottom: 1px solid rgba(75, 72, 66, 0.08);
 }
 
 /* ─── Scrollbar ─── */
@@ -168,9 +172,9 @@ body {
   background: var(--color-surface-light);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-brand-600);
+  background: var(--color-brand-700);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-brand-700);
+  background: var(--color-brand-800);
 }
