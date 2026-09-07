@@ -13,7 +13,6 @@ const servicesLinks = [
 const quickLinks = [
   { key: "about", id: "Tentang Kami", en: "About Us" },
   { key: "doctors", id: "Dokter", en: "Doctors" },
-  { key: "gallery", id: "Galeri", en: "Gallery" },
   { key: "testimonials", id: "Testimoni", en: "Testimonials" },
   { key: "blog", id: "Blog", en: "Blog" },
   { key: "contact", id: "Kontak", en: "Contact" },

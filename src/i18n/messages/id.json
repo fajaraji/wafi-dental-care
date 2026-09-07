@@ -73,7 +73,6 @@
     "services": "Layanan",
     "about": "Tentang Kami",
     "doctors": "Dokter",
-    "gallery": "Galeri",
     "testimonials": "Testimoni",
     "blog": "Blog",
     "contact": "Kontak"
@@ -186,13 +185,6 @@
     "readArticle": "Baca Artikel",
     "relatedPosts": "Artikel Terkait",
     "shareArticle": "Bagikan"
-  },
-  "gallery": {
-    "title": "Galeri Wafi Dental Care",
-    "subtitle": "Lihat fasilitas dan suasana klinik kami",
-    "clinic": "Klinik",
-    "facilities": "Fasilitas",
-    "events": "Kegiatan"
   },
   "contact": {
     "title": "Kontak Kami",

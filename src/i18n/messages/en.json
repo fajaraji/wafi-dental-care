@@ -73,7 +73,6 @@
     "services": "Services",
     "about": "About Us",
     "doctors": "Doctors",
-    "gallery": "Gallery",
     "testimonials": "Testimonials",
     "blog": "Blog",
     "contact": "Contact"
@@ -186,13 +185,6 @@
     "readArticle": "Read Article",
     "relatedPosts": "Related Posts",
     "shareArticle": "Share"
-  },
-  "gallery": {
-    "title": "Wafi Dental Care Gallery",
-    "subtitle": "See our clinic facilities and atmosphere",
-    "clinic": "Clinic",
-    "facilities": "Facilities",
-    "events": "Events"
   },
   "contact": {
     "title": "Contact Us",

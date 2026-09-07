@@ -22,10 +22,6 @@ export const routing = defineRouting({
       id: "/dokter",
       en: "/doctors",
     },
-    "/gallery": {
-      id: "/galeri",
-      en: "/gallery",
-    },
     "/testimonials": {
       id: "/testimoni",
       en: "/testimonials",

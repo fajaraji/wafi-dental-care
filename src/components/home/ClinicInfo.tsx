@@ -67,7 +67,7 @@ export function ClinicInfo() {
             {/* Google Maps Embed */}
             <div className="mt-6 overflow-hidden rounded-2xl shadow-lg">
               <iframe
-                src="https://www.google.com/maps?q=Wafi+Dental+Care+Jl+Nusa+Indah+No+233H+Condongcatur+Depok+Sleman+Yogyakarta&output=embed"
+                src="https://maps.google.com/maps?q=Wafi%20Dental%20Care%20Jl%20Nusa%20Indah%20No%20233H%20Condongcatur%20Depok%20Sleman%20Yogyakarta&z=16&output=embed"
                 width="100%"
                 height="300"
                 style={{ border: 0 }}
