@@ -251,7 +251,7 @@ export const doctorsSeed = [
       "Lulusan FKG Universitas Gadjah Mada dengan pengalaman lebih dari 8 tahun di bidang perawatan saluran akar gigi. Telah menangani ratusan kasus root canal dengan tingkat keberhasilan tinggi. Aktif mengikuti seminar dan pelatihan endodonsi terkini.",
     bioEn:
       "Graduate of Universitas Gadjah Mada Faculty of Dentistry with over 8 years of experience in root canal treatment. Has handled hundreds of root canal cases with high success rates. Actively participates in the latest endodontic seminars and training.",
-    photo: "/images/doctors/dr1.svg",
+    photo: "/images/doctors/dr1.jpg",
     schedules: [
       { dayOfWeek: 1, startTime: "08:00", endTime: "16:00" },
       { dayOfWeek: 2, startTime: "08:00", endTime: "16:00" },
@@ -271,7 +271,7 @@ export const doctorsSeed = [
       "Berpengalaman lebih dari 6 tahun menangani berbagai kasus behel dan aligner dengan pendekatan yang nyaman dan estetik. Lulusan FKG Universitas Indonesia dengan sertifikasi clear aligner internasional.",
     bioEn:
       "Over 6 years of experience handling various braces and aligner cases with a comfortable and aesthetic approach. Graduate of Universitas Indonesia Faculty of Dentistry with international clear aligner certification.",
-    photo: "/images/doctors/dr2.svg",
+    photo: "/images/doctors/dr2.jpg",
     schedules: [
       { dayOfWeek: 1, startTime: "13:00", endTime: "21:00" },
       { dayOfWeek: 2, startTime: "08:00", endTime: "16:00" },
@@ -291,7 +291,7 @@ export const doctorsSeed = [
       "Fokus pada perawatan gigi preventif dan estetik dengan sentuhan yang lembut dan ramah untuk semua usia. Lulusan FKG Universitas Airlangga dengan passion di bidang estetik gigi dan perawatan anak.",
     bioEn:
       "Focuses on preventive and aesthetic dental care with a gentle, friendly touch for all ages. Graduate of Universitas Airlangga Faculty of Dentistry with a passion for dental aesthetics and pediatric care.",
-    photo: "/images/doctors/dr3.svg",
+    photo: "/images/doctors/dr3.jpg",
     schedules: [
       { dayOfWeek: 1, startTime: "08:00", endTime: "16:00" },
       { dayOfWeek: 2, startTime: "13:00", endTime: "21:00" },
@@ -311,7 +311,7 @@ export const doctorsSeed = [
       "Ahli dalam prosedur odontektomi dan implan gigi dengan teknik minimal invasif untuk pemulihan cepat. Berpengalaman lebih dari 10 tahun di bidang bedah mulut dan implantologi.",
     bioEn:
       "Expert in odontectomy and dental implant procedures using minimally invasive techniques for fast recovery. Over 10 years of experience in oral surgery and implantology.",
-    photo: "/images/doctors/dr4.svg",
+    photo: "/images/doctors/dr4.jpg",
     schedules: [
       { dayOfWeek: 1, startTime: "08:00", endTime: "16:00" },
       { dayOfWeek: 3, startTime: "08:00", endTime: "16:00" },
@@ -330,7 +330,7 @@ export const doctorsSeed = [
       "Dokter gigi muda yang energik dengan keahlian di bidang perawatan estetik dan pemutihan gigi. Lulusan terbaik FKG Universitas Gadjah Mada dengan sertifikasi bleaching profesional.",
     bioEn:
       "Energetic young dentist with expertise in aesthetic treatment and teeth whitening. Top graduate of Universitas Gadjah Mada Faculty of Dentistry with professional bleaching certification.",
-    photo: "/images/doctors/dr5.svg",
+    photo: "/images/doctors/dr5.jpg",
     schedules: [
       { dayOfWeek: 2, startTime: "08:00", endTime: "16:00" },
       { dayOfWeek: 3, startTime: "13:00", endTime: "21:00" },
@@ -498,7 +498,7 @@ Don't wait until the pain gets worse! Book your appointment now.`,
     excerptEn:
       "Did you know that untreated cavities can cause headaches? Read the full explanation here.",
     slug: "gigi-berlubang-sakit-kepala",
-    image: "/images/blog/cavity-headache.svg",
+    image: "/images/blog/cavity-headache.jpg",
     categoryId: "Kesehatan Gigi",
     categoryEn: "Dental Health",
     author: "drg. Siti Nuraini, Sp.KG",
@@ -522,7 +522,7 @@ Scaling is a procedure to clean tartar (calculus) and plaque that accumulates on
     excerptId: "Scaling gigi — banyak yang takut, tapi apakah benar scaling bisa merusak gigi? Baca panduan lengkapnya.",
     excerptEn: "Dental scaling — many are afraid, but can scaling really damage teeth? Read the complete guide.",
     slug: "panduan-scaling-gigi",
-    image: "/images/blog/scaling-guide.svg",
+    image: "/images/blog/scaling-guide.jpg",
     categoryId: "Perawatan Gigi",
     categoryEn: "Dental Care",
     author: "drg. Maya Puspita",
@@ -614,7 +614,7 @@ At Wafi Dental Care, we provide free consultation to help you choose the right o
     excerptEn:
       "Confused between braces and clear aligners? Read the complete comparison with pros and cons of each.",
     slug: "behel-vs-clear-aligner",
-    image: "/images/blog/braces-vs-aligner.svg",
+    image: "/images/blog/braces-vs-aligner.jpg",
     categoryId: "Perawatan Gigi",
     categoryEn: "Dental Care",
     author: "drg. Ahmad Fauzi, Sp.Ort",
@@ -646,7 +646,7 @@ Food debris stuck between teeth can become a source of bacteria causing bad brea
     excerptId: "Berpuasa bukan alasan untuk mengabaikan kesehatan gigi. Ikuti 5 tips perawatan gigi saat puasa ini!",
     excerptEn: "Fasting is not an excuse to neglect dental health. Follow these 5 dental care tips during fasting!",
     slug: "tips-merawat-gigi-puasa",
-    image: "/images/blog/fasting-dental-care.svg",
+    image: "/images/blog/fasting-dental-care.jpg",
     categoryId: "Tips & Tricks",
     categoryEn: "Tips & Tricks",
     author: "drg. Ratna Dewi",

@@ -10,7 +10,7 @@ const dummyDoctors = [
     name: "drg. Siti Nuraini, Sp.KG",
     specialtyId: "Spesialis Konservasi Gigi (Endodonsi)",
     specialtyEn: "Conservative Dentistry Specialist (Endodontics)",
-    photo: "/images/doctors/dr1.svg",
+    photo: "/images/doctors/dr1.jpg",
     bioId: "Lulusan FKG Universitas Gadjah Mada dengan pengalaman lebih dari 8 tahun di bidang perawatan saluran akar.",
   },
   {
@@ -18,7 +18,7 @@ const dummyDoctors = [
     name: "drg. Ahmad Fauzi, Sp.Ort",
     specialtyId: "Spesialis Orthodonsi",
     specialtyEn: "Orthodontics Specialist",
-    photo: "/images/doctors/dr2.svg",
+    photo: "/images/doctors/dr2.jpg",
     bioId: "Berpengalaman menangani berbagai kasus behel dan aligner dengan pendekatan yang nyaman dan estetik.",
   },
   {
@@ -26,7 +26,7 @@ const dummyDoctors = [
     name: "drg. Ratna Dewi",
     specialtyId: "Dokter Gigi Umum",
     specialtyEn: "General Dentist",
-    photo: "/images/doctors/dr3.svg",
+    photo: "/images/doctors/dr3.jpg",
     bioId: "Fokus pada perawatan gigi preventif dan estetik dengan sentuhan yang lembut dan ramah untuk semua usia.",
   },
   {
@@ -34,7 +34,7 @@ const dummyDoctors = [
     name: "drg. Budi Santoso, Sp.BM",
     specialtyId: "Spesialis Bedah Mulut",
     specialtyEn: "Oral Surgery Specialist",
-    photo: "/images/doctors/dr4.svg",
+    photo: "/images/doctors/dr4.jpg",
     bioId: "Ahli dalam prosedur odontektomi dan implan gigi dengan teknik minimal invasif untuk pemulihan cepat.",
   },
 ];

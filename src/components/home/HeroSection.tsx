@@ -136,7 +136,7 @@ export function HeroSection() {
                   <path d="M60 10c-15 0-28 8-35 20C18 42 12 56 12 68c0 10 6 18 14 20 4 1 8-1 10-5l4-8c2-4 6-6 10-5 3 1 5 4 5 8v20c0 5 5 10 10 10s10-5 10-10V78c0-4 2-7 5-8 4-1 8 1 10 5l4 8c2 4 6 6 10 5 8-2 14-10 14-20 0-12-6-26-13-38C87 18 74 10 60 10z" />
                 </svg>
                 <img
-                  src="/images/home/hero-clinic.svg"
+                  src="/images/home/hero-clinic.jpg"
                   alt="Wafi Dental Care"
                   className="absolute inset-0 h-full w-full object-cover"
                   onError={(e) => {
