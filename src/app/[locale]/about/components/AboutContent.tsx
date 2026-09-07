@@ -61,7 +61,7 @@ export function AboutContent() {
                   </svg>
                 </div>
                 <img
-                  src="/images/about/clinic-reception.jpg"
+                  src="/images/about/reception.jpg"
                   alt="Wafi Dental Care Clinic"
                   className="absolute inset-0 h-full w-full object-cover"
                   onError={(e) => {
