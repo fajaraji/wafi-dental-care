@@ -22,8 +22,8 @@ export function Header() {
   const pathname = usePathname();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  const switchLocale = locale === "id" ? "en" : "id";
-  const switchPath = pathname.replace(`/${locale}`, `/${switchLocale}`);
+  const langPath = (target: string) =>
+    pathname.replace(new RegExp(`^/${locale}`), `/${target}`);
 
   const isActive = (href: string) =>
     pathname === `/${locale}${href === "/" ? "" : href}`;
@@ -58,13 +58,26 @@ export function Header() {
               </Link>
             ))}
 
-            {/* Language Toggle */}
-            <Link
-              href={switchPath}
-              className="text-xs font-semibold uppercase tracking-widest text-text-muted transition-colors hover:text-brand-600"
-            >
-              {ct(switchLocale)}
-            </Link>
+            {/* Language Flags */}
+            <div className="flex items-center gap-2">
+              {(["id", "en"] as const).map((lng) => {
+                const active = locale === lng;
+                return (
+                  <Link
+                    key={lng}
+                    href={langPath(lng)}
+                    aria-label={lng === "id" ? "Bahasa Indonesia" : "English"}
+                    className={`flex items-center justify-center overflow-hidden rounded-[3px] transition-opacity duration-200 ${
+                      active
+                        ? "opacity-100 ring-2 ring-gold-500/80"
+                        : "opacity-40 hover:opacity-80"
+                    }`}
+                  >
+                    {lng === "id" ? <FlagID /> : <FlagGB />}
+                  </Link>
+                );
+              })}
+            </div>
 
             <Link href={`/${locale}/booking`} className="btn-primary">
               {ct("bookNow")}
@@ -118,12 +131,26 @@ export function Header() {
                 </Link>
               ))}
               <div className="flex items-center gap-3 pt-5">
-                <Link
-                  href={switchPath}
-                  className="text-xs font-semibold uppercase tracking-widest text-text-muted"
-                >
-                  {ct(switchLocale)}
-                </Link>
+                <div className="flex items-center gap-2">
+                  {(["id", "en"] as const).map((lng) => {
+                    const active = locale === lng;
+                    return (
+                      <Link
+                        key={lng}
+                        href={langPath(lng)}
+                        onClick={() => setIsMobileOpen(false)}
+                        aria-label={lng === "id" ? "Bahasa Indonesia" : "English"}
+                        className={`flex items-center justify-center overflow-hidden rounded-[3px] transition-opacity duration-200 ${
+                          active
+                            ? "opacity-100 ring-2 ring-gold-500/80"
+                            : "opacity-40 hover:opacity-80"
+                        }`}
+                      >
+                        {lng === "id" ? <FlagID /> : <FlagGB />}
+                      </Link>
+                    );
+                  })}
+                </div>
                 <Link
                   href={`/${locale}/booking`}
                   onClick={() => setIsMobileOpen(false)}
@@ -137,5 +164,26 @@ export function Header() {
         )}
       </AnimatePresence>
     </header>
+  );
+}
+
+function FlagID() {
+  return (
+    <svg viewBox="0 0 32 20" className="h-4 w-6" aria-hidden="true">
+      <rect width="32" height="10" fill="#CE1126" />
+      <rect y="10" width="32" height="10" fill="#ffffff" />
+    </svg>
+  );
+}
+
+function FlagGB() {
+  return (
+    <svg viewBox="0 0 60 30" className="h-4 w-6" aria-hidden="true">
+      <rect width="60" height="30" fill="#012169" />
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#ffffff" strokeWidth="6" />
+      <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="3" />
+      <path d="M0,15 H60 M30,0 V30" stroke="#ffffff" strokeWidth="10" />
+      <path d="M0,15 H60 M30,0 V30" stroke="#C8102E" strokeWidth="6" />
+    </svg>
   );
 }
