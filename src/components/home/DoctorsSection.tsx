@@ -62,20 +62,20 @@ export function DoctorsSection() {
           </p>
         </div>
 
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2">
           {dummyDoctors.map((doctor, index) => (
             <motion.div
               key={doctor.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: index * 0.08 }}
-              className="group"
+              transition={{ duration: 0.45, delay: (index % 2) * 0.08 }}
+              className="group flex gap-6"
             >
               {/* Portrait */}
-              <div className="relative aspect-square overflow-hidden bg-surface-light">
+              <div className="relative h-40 w-32 flex-shrink-0 overflow-hidden bg-surface-light lg:h-44 lg:w-36">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <svg viewBox="0 0 80 80" className="h-20 w-20 text-brand-200">
+                  <svg viewBox="0 0 80 80" className="h-16 w-16 text-brand-200">
                     <circle cx="40" cy="28" r="16" fill="currentColor" />
                     <ellipse cx="40" cy="70" rx="28" ry="18" fill="currentColor" />
                   </svg>
@@ -83,7 +83,7 @@ export function DoctorsSection() {
                 <img
                   src={doctor.photo}
                   alt={doctor.name}
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="absolute inset-0 h-full w-full object-cover object-top"
                   onError={(e) => {
                     e.currentTarget.style.display = "none";
                   }}
@@ -91,15 +91,18 @@ export function DoctorsSection() {
                 <div className="absolute inset-0 border border-brand-600/10 transition-colors duration-300 group-hover:border-gold-500/50" />
               </div>
 
-              <h3 className="mt-6 font-display text-xl font-medium text-brand-800">
-                {doctor.name}
-              </h3>
-              <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-gold-600">
-                {isId ? doctor.specialtyId : doctor.specialtyEn}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-text-muted line-clamp-3">
-                {doctor.bioId}
-              </p>
+              {/* Text */}
+              <div>
+                <h3 className="font-display text-xl font-medium leading-snug text-brand-800">
+                  {doctor.name}
+                </h3>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-gold-600">
+                  {isId ? doctor.specialtyId : doctor.specialtyEn}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-text-muted line-clamp-3">
+                  {doctor.bioId}
+                </p>
+              </div>
             </motion.div>
           ))}
         </div>
