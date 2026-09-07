@@ -50,7 +50,7 @@ export function ClinicInfo() {
                     Yogyakarta
                   </p>
                   <a
-                    href="https://maps.app.goo.gl/CyKQas1bQD6CrTjo7"
+                    href="https://maps.app.goo.gl/3tAWSV5JY7nrmVPA6"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-accent-600 hover:text-accent-700"
@@ -67,7 +67,7 @@ export function ClinicInfo() {
             {/* Google Maps Embed */}
             <div className="mt-6 overflow-hidden rounded-2xl shadow-lg">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.0!2d110.39!3d-7.77!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sCondongcatur%2C%20Depok%2C%20Sleman!5e0!3m2!1sid!2sid!4v1700000000000"
+                src="https://www.google.com/maps?q=Wafi+Dental+Care+Jl+Nusa+Indah+No+233H+Condongcatur+Depok+Sleman+Yogyakarta&output=embed"
                 width="100%"
                 height="300"
                 style={{ border: 0 }}
