@@ -251,7 +251,7 @@ export const doctorsSeed = [
       "Lulusan FKG Universitas Gadjah Mada dengan pengalaman lebih dari 8 tahun di bidang perawatan saluran akar gigi. Telah menangani ratusan kasus root canal dengan tingkat keberhasilan tinggi. Aktif mengikuti seminar dan pelatihan endodonsi terkini.",
     bioEn:
       "Graduate of Universitas Gadjah Mada Faculty of Dentistry with over 8 years of experience in root canal treatment. Has handled hundreds of root canal cases with high success rates. Actively participates in the latest endodontic seminars and training.",
-    photo: "/images/doctors/dr1.jpg",
+    photo: "/images/doctors/dr1.svg",
     schedules: [
       { dayOfWeek: 1, startTime: "08:00", endTime: "16:00" },
       { dayOfWeek: 2, startTime: "08:00", endTime: "16:00" },
@@ -271,7 +271,7 @@ export const doctorsSeed = [
       "Berpengalaman lebih dari 6 tahun menangani berbagai kasus behel dan aligner dengan pendekatan yang nyaman dan estetik. Lulusan FKG Universitas Indonesia dengan sertifikasi clear aligner internasional.",
     bioEn:
       "Over 6 years of experience handling various braces and aligner cases with a comfortable and aesthetic approach. Graduate of Universitas Indonesia Faculty of Dentistry with international clear aligner certification.",
-    photo: "/images/doctors/dr2.jpg",
+    photo: "/images/doctors/dr2.svg",
     schedules: [
       { dayOfWeek: 1, startTime: "13:00", endTime: "21:00" },
       { dayOfWeek: 2, startTime: "08:00", endTime: "16:00" },
@@ -291,7 +291,7 @@ export const doctorsSeed = [
       "Fokus pada perawatan gigi preventif dan estetik dengan sentuhan yang lembut dan ramah untuk semua usia. Lulusan FKG Universitas Airlangga dengan passion di bidang estetik gigi dan perawatan anak.",
     bioEn:
       "Focuses on preventive and aesthetic dental care with a gentle, friendly touch for all ages. Graduate of Universitas Airlangga Faculty of Dentistry with a passion for dental aesthetics and pediatric care.",
-    photo: "/images/doctors/dr3.jpg",
+    photo: "/images/doctors/dr3.svg",
     schedules: [
       { dayOfWeek: 1, startTime: "08:00", endTime: "16:00" },
       { dayOfWeek: 2, startTime: "13:00", endTime: "21:00" },
@@ -311,7 +311,7 @@ export const doctorsSeed = [
       "Ahli dalam prosedur odontektomi dan implan gigi dengan teknik minimal invasif untuk pemulihan cepat. Berpengalaman lebih dari 10 tahun di bidang bedah mulut dan implantologi.",
     bioEn:
       "Expert in odontectomy and dental implant procedures using minimally invasive techniques for fast recovery. Over 10 years of experience in oral surgery and implantology.",
-    photo: "/images/doctors/dr4.jpg",
+    photo: "/images/doctors/dr4.svg",
     schedules: [
       { dayOfWeek: 1, startTime: "08:00", endTime: "16:00" },
       { dayOfWeek: 3, startTime: "08:00", endTime: "16:00" },
@@ -330,7 +330,7 @@ export const doctorsSeed = [
       "Dokter gigi muda yang energik dengan keahlian di bidang perawatan estetik dan pemutihan gigi. Lulusan terbaik FKG Universitas Gadjah Mada dengan sertifikasi bleaching profesional.",
     bioEn:
       "Energetic young dentist with expertise in aesthetic treatment and teeth whitening. Top graduate of Universitas Gadjah Mada Faculty of Dentistry with professional bleaching certification.",
-    photo: "/images/doctors/dr5.jpg",
+    photo: "/images/doctors/dr5.svg",
     schedules: [
       { dayOfWeek: 2, startTime: "08:00", endTime: "16:00" },
       { dayOfWeek: 3, startTime: "13:00", endTime: "21:00" },

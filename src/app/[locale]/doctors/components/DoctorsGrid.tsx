@@ -34,6 +34,14 @@ export function DoctorsGrid() {
                       <ellipse cx="40" cy="70" rx="28" ry="18" fill="currentColor" />
                     </svg>
                   </div>
+                  <img
+                    src={doctor.photo}
+                    alt={doctor.name}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-600/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </div>
 
