@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00A8B5"/>
+      <stop offset="1" stop-color="#1B3A6B"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <circle cx="120" cy="70" r="130" fill="#ffffff" opacity="0.06"/>
+  <circle cx="720" cy="410" r="110" fill="#ffffff" opacity="0.05"/>
+  <g transform="translate(400,205)" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <path d="M0 -90c-54 0-100 28-126 72C-162 26-184 76-184 121c0 36 22 64 50 71 14 4 28-4 36-18l14-28c8-14 22-22 36-18 10 4 17 14 17 28v72c0 18 18 36 36 36s36-18 36-36v-72c0-14 7-24 17-28 14-4 28 4 36 18l14 28c8 14 22 22 36 18 28-7 50-35 50-71 0-45-22-95-58-133C100 -62 54 -90 0 -90z"/>
+    <path d="M-60 -40c10 -6 22 -10 34 -12" stroke-width="10"/>
+    <path d="M60 -40c-10 -6 -22 -10 -34 -12" stroke-width="10"/>
+    <path d="M-20 -70c14 -8 26 -8 40 0" stroke-width="8"/>
+  </g>
+  <text x="400" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#ffffff" opacity="0.9">Panduan Scaling Gigi</text>
+</svg>

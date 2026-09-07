@@ -70,19 +70,31 @@ export function BlogList({
                   href={`/${locale}/blog/${post.slug}`}
                   className="group block overflow-hidden rounded-2xl bg-surface-light shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
                 >
-                  {/* Image placeholder */}
-                  <div className="aspect-[16/9] bg-gradient-to-br from-brand-100 via-brand-50 to-accent-100 flex items-center justify-center">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="h-12 w-12 text-brand-200"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                    >
-                      <path d="M19.5 3h-15A2.25 2.25 0 002.25 5.25v10.5A2.25 2.25 0 004.5 18h15a2.25 2.25 0 002.25-2.25V5.25A2.25 2.25 0 0019.5 3zm0 12.75h-15V5.25h15v10.5z" />
-                      <path d="M4.5 15.75l5.25-5.25L15 15.75" strokeLinecap="round" strokeLinejoin="round" />
-                      <circle cx="8.25" cy="8.25" r="1.5" fill="currentColor" />
-                    </svg>
+                  {/* Image */}
+                  <div className="relative aspect-[16/9] bg-gradient-to-br from-brand-100 via-brand-50 to-accent-100">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="h-12 w-12 text-brand-200"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      >
+                        <path d="M19.5 3h-15A2.25 2.25 0 002.25 5.25v10.5A2.25 2.25 0 004.5 18h15a2.25 2.25 0 002.25-2.25V5.25A2.25 2.25 0 0019.5 3zm0 12.75h-15V5.25h15v10.5z" />
+                        <path d="M4.5 15.75l5.25-5.25L15 15.75" strokeLinecap="round" strokeLinejoin="round" />
+                        <circle cx="8.25" cy="8.25" r="1.5" fill="currentColor" />
+                      </svg>
+                    </div>
+                    {post.image && (
+                      <img
+                        src={post.image}
+                        alt={isId ? post.titleId : post.titleEn}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        onError={(e) => {
+                          e.currentTarget.style.display = "none";
+                        }}
+                      />
+                    )}
                   </div>
 
                   <div className="p-5">

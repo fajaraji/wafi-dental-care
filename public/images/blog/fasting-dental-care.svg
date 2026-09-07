@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00A8B5"/>
+      <stop offset="1" stop-color="#1B3A6B"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <circle cx="720" cy="60" r="130" fill="#ffffff" opacity="0.06"/>
+  <g transform="translate(400,225)" fill="#ffffff" opacity="0.95">
+    <path d="M0 -80c-48 0-88 25-110 63C-144 19-163 64-163 104c0 32 19 56 44 62 12 3 24-3 31-15l13-25c6-12 19-19 32-16 9 2 15 12 15 24v63c0 16 16 32 32 32s32-16 32-32v-63c0-12 6-22 15-24 13-3 26 4 32 16l13 25c7 12 19 18 31 15 25-6 44-30 44-62 0-40-19-85-53-122C88 -55 48 -80 0 -80z"/>
+    <path d="M-38 -34c14 -9 28 -15 42 -18 5 -1 10 4 9 9-2 6-8 10-14 13l-24 9c-8 3-17 0-22-6z" fill="#00A8B5"/>
+    <path d="M44 -34c-14 -9 -28 -15 -42 -18 -5 -1 -10 4 -9 9 2 6 8 10 14 13l24 9c8 3 17 0 22-6z" fill="#00A8B5"/>
+  </g>
+  <text x="400" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#ffffff" opacity="0.9">Perawatan Gigi Saat Puasa</text>
+</svg>
