@@ -25,9 +25,9 @@ export function DoctorsGrid() {
               transition={{ delay: index * 0.1, duration: 0.6 }}
               className="group"
             >
-              <div className="flex flex-col gap-6 sm:flex-row sm:gap-8">
-                {/* Photo */}
-                <div className="relative h-40 w-32 flex-shrink-0 overflow-hidden rounded-2xl bg-surface-light sm:h-52 sm:w-40 lg:h-56 lg:w-44">
+              <div className="flex flex-col gap-6 sm:flex-row sm:items-stretch sm:gap-8">
+                {/* Photo — stretches to match bio height */}
+                <div className="relative h-40 w-32 flex-shrink-0 overflow-hidden rounded-2xl bg-surface-light sm:h-auto sm:w-40 sm:self-stretch lg:w-44">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <svg viewBox="0 0 80 80" className="h-20 w-20 text-brand-200">
                       <circle cx="40" cy="28" r="16" fill="currentColor" />
@@ -45,7 +45,7 @@ export function DoctorsGrid() {
                   <div className="absolute inset-0 border border-brand-600/10" />
                 </div>
 
-                {/* Bio + Schedule */}
+                {/* Bio */}
                 <div className="min-w-0 flex-1">
                   <h2 className="font-display text-2xl font-medium text-brand-800">
                     {doctor.name}
@@ -66,28 +66,26 @@ export function DoctorsGrid() {
                       <path d="M5 12h14m-6-6l6 6-6 6" />
                     </svg>
                   </Link>
-
-                  <div className="mt-8 border border-brand-600/10 bg-paper p-5">
-                    <h3 className="text-xs font-semibold uppercase tracking-widest text-gold-600 mb-3">
-                      {t("schedule")}
-                    </h3>
-                    <ul className="space-y-1.5">
-                      {doctor.schedules.map((s, i) => (
-                        <li
-                          key={i}
-                          className="flex items-center justify-between text-sm"
-                        >
-                          <span className="text-text-secondary font-medium min-w-[100px]">
-                            {dayNames[isId ? "id" : "en"][s.dayOfWeek]}
-                          </span>
-                          <span className="text-brand-600 font-semibold tabular-nums">
-                            {s.startTime} – {s.endTime}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
                 </div>
+              </div>
+
+              {/* Schedule — full width below */}
+              <div className="mt-8 border border-brand-600/10 bg-paper p-5">
+                <h3 className="text-xs font-semibold uppercase tracking-widest text-gold-600 mb-3">
+                  {t("schedule")}
+                </h3>
+                <ul className="grid gap-x-8 gap-y-1.5 sm:grid-cols-2 lg:grid-cols-4">
+                  {doctor.schedules.map((s, i) => (
+                    <li key={i} className="flex items-center justify-between text-sm">
+                      <span className="text-text-secondary font-medium">
+                        {dayNames[isId ? "id" : "en"][s.dayOfWeek]}
+                      </span>
+                      <span className="text-brand-600 font-semibold tabular-nums">
+                        {s.startTime} – {s.endTime}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               {/* Divider */}
