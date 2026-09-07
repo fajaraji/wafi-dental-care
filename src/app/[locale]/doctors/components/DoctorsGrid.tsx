@@ -27,7 +27,7 @@ export function DoctorsGrid() {
             >
               <div className="flex flex-col gap-6 sm:flex-row sm:gap-8">
                 {/* Photo */}
-                <div className="relative h-40 w-32 flex-shrink-0 overflow-hidden bg-surface-light sm:h-52 sm:w-40 lg:h-56 lg:w-44">
+                <div className="relative h-40 w-32 flex-shrink-0 overflow-hidden rounded-2xl bg-surface-light sm:h-52 sm:w-40 lg:h-56 lg:w-44">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <svg viewBox="0 0 80 80" className="h-20 w-20 text-brand-200">
                       <circle cx="40" cy="28" r="16" fill="currentColor" />
