@@ -33,13 +33,8 @@ export function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-18 items-center justify-between">
           {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center border border-brand-600/30 bg-brand-600/5">
-              <span className="font-display text-lg font-bold text-brand-600">W</span>
-            </div>
-            <span className="font-display text-xl font-semibold tracking-tight text-brand-700">
-              Wafi Dental Care
-            </span>
+          <Link href={`/${locale}`} className="flex items-center">
+            <img src="/logo.png" alt="Wafi Dental Care" className="h-11 w-auto" />
           </Link>
 
           {/* Desktop Nav */}

@@ -42,9 +42,7 @@ export default function AdminLayoutClient({
         }`}
       >
         <div className="flex h-16 items-center gap-3 border-b border-gray-200 px-6">
-          <div className="flex h-9 w-9 items-center justify-center border border-brand-600/30 text-sm font-bold text-brand-700">
-            W
-          </div>
+          <img src="/logo.png" alt="Wafi Dental Care" className="h-8 w-auto" />
           <div>
             <p className="font-bold text-text-primary text-sm">Wafi Admin</p>
             <p className="text-xs text-text-muted">{userName || "Admin"}</p>
