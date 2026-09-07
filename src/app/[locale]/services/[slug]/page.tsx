@@ -40,21 +40,22 @@ export default async function ServiceDetailPage({
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600 pt-32 pb-16">
+      <section className="border-b border-brand-600/10 bg-paper pt-32 pb-16 lg:pt-40">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Link
             href={`/${locale}/services`}
-            className="inline-flex items-center gap-2 text-sm font-medium text-white/60 hover:text-white transition-colors mb-6"
+            className="inline-flex items-center gap-2 text-sm font-medium text-text-muted hover:text-brand-600 transition-colors mb-6"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M19 12H5m6-6l-6 6 6 6" />
             </svg>
             {ct("backToServices")}
           </Link>
-          <span className="inline-block rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold text-accent-200 backdrop-blur-sm border border-white/10">
+          <p className="eyebrow flex items-center gap-3">
+            <span className="hairline w-10" />
             {service.category}
-          </span>
-          <h1 className="mt-4 font-display text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl">
+          </p>
+          <h1 className="mt-5 font-display text-4xl font-medium leading-tight text-brand-800 sm:text-5xl lg:text-6xl">
             {isId ? service.titleId : service.titleEn}
           </h1>
         </div>
@@ -76,7 +77,7 @@ export default async function ServiceDetailPage({
               {/* Booking CTA */}
               <Link
                 href={`/${locale}/booking`}
-                className="mt-8 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-600 to-accent-500 px-8 py-3.5 text-base font-bold text-white shadow-lg shadow-brand-600/25 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-8 py-3.5 text-base font-bold text-white transition-colors hover:bg-brand-700"
               >
                 {t("bookThisService")}
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

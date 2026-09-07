@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import ContactForm from "./ContactForm";
 import type { Metadata } from "next";
+import { PageHero } from "@/components/layout/PageHero";
 
 export async function generateMetadata({
   params,
@@ -25,14 +26,12 @@ export default async function ContactPage({
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600 pt-32 pb-12">
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
-          <h1 className="font-display text-4xl font-extrabold text-white sm:text-5xl">
-            {t("title")}
-          </h1>
-          <p className="mt-3 text-lg text-white/70">{t("subtitle")}</p>
-        </div>
-      </div>
+      <PageHero
+        eyebrow="Hubungi Kami"
+        title={t("title")}
+        subtitle={t("subtitle")}
+        centered
+      />
 
       <section className="py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

@@ -44,11 +44,11 @@ export default async function BlogDetailPage({
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600 pt-32 pb-16">
+      <section className="border-b border-brand-600/10 bg-paper pt-32 pb-16 lg:pt-40">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <Link
             href={`/${locale}/blog`}
-            className="inline-flex items-center gap-2 text-sm font-medium text-white/60 hover:text-white transition-colors mb-6"
+            className="inline-flex items-center gap-2 text-sm font-medium text-text-muted hover:text-brand-600 transition-colors mb-6"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M19 12H5m6-6l-6 6 6 6" />
@@ -57,23 +57,24 @@ export default async function BlogDetailPage({
           </Link>
 
           <div className="flex items-center gap-3 mb-4">
-            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-semibold text-accent-200 backdrop-blur-sm">
+            <span className="eyebrow">
               {isId ? post.categoryId : post.categoryEn}
             </span>
-            <span className="text-sm text-white/50">
+            <span className="h-1 w-1 rounded-full bg-gold-500" />
+            <span className="text-sm text-text-muted">
               {post.publishedAt ? formatDate(post.publishedAt, locale) : ""}
             </span>
           </div>
 
-          <h1 className="font-display text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl leading-tight">
+          <h1 className="font-display text-4xl font-medium leading-tight text-brand-800 sm:text-5xl">
             {isId ? post.titleId : post.titleEn}
           </h1>
 
-          <div className="mt-4 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-sm font-bold text-white">
+          <div className="mt-6 flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-brand-600/25 font-display text-sm font-semibold text-brand-700">
               {post.author?.charAt(0)}
             </div>
-            <span className="text-sm text-white/70">
+            <span className="text-sm text-text-secondary">
               {ct("by")} {post.author}
             </span>
           </div>

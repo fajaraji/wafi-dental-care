@@ -42,7 +42,7 @@ export default function AdminLayoutClient({
         }`}
       >
         <div className="flex h-16 items-center gap-3 border-b border-gray-200 px-6">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-brand-600 to-accent-500 text-white font-bold text-sm">
+          <div className="flex h-9 w-9 items-center justify-center border border-brand-600/30 text-sm font-bold text-brand-700">
             W
           </div>
           <div>

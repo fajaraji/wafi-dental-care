@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-brand-900">
       <div className="relative">
         {/* Animated tooth spinner */}
         <div className="h-20 w-20 animate-pulse rounded-full bg-white/10 backdrop-blur-sm border-2 border-white/20 flex items-center justify-center">

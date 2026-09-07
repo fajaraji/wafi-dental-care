@@ -76,7 +76,7 @@ export default function ContactForm({ locale }: { locale: string }) {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="w-full rounded-xl bg-gradient-to-r from-brand-600 to-accent-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-brand-600/25 transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-60 disabled:hover:scale-100"
+        className="w-full rounded-full bg-ink px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-700 disabled:opacity-60"
       >
         {status === "sending"
           ? isId ? "Mengirim..." : "Sending..."

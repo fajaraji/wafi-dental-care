@@ -27,9 +27,9 @@ export function DoctorsGrid() {
             >
               <div className="grid gap-8 md:grid-cols-[200px,1fr] lg:grid-cols-[240px,1fr,280px]">
                 {/* Photo */}
-                <div className="relative mx-auto h-48 w-48 overflow-hidden rounded-3xl bg-gradient-to-br from-brand-100 to-accent-100 shadow-lg md:h-56 md:w-56 lg:h-60 lg:w-60">
+                <div className="relative aspect-square overflow-hidden bg-surface-light">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <svg viewBox="0 0 80 80" className="h-24 w-24 text-brand-300">
+                    <svg viewBox="0 0 80 80" className="h-24 w-24 text-brand-200">
                       <circle cx="40" cy="28" r="16" fill="currentColor" />
                       <ellipse cx="40" cy="70" rx="28" ry="18" fill="currentColor" />
                     </svg>
@@ -42,7 +42,7 @@ export function DoctorsGrid() {
                       e.currentTarget.style.display = "none";
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-600/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute inset-0 border border-brand-600/10" />
                 </div>
 
                 {/* Bio */}
@@ -69,8 +69,8 @@ export function DoctorsGrid() {
                 </div>
 
                 {/* Schedule */}
-                <div className="rounded-2xl bg-surface-light p-5 shadow-sm">
-                  <h3 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-3">
+                <div className="border border-brand-600/10 bg-paper p-5">
+                  <h3 className="text-xs font-semibold uppercase tracking-widest text-gold-600 mb-3">
                     {t("schedule")}
                   </h3>
                   <ul className="space-y-1.5">

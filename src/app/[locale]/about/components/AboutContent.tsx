@@ -11,12 +11,12 @@ const values = [
 ];
 
 const facilities = [
-  { key: "facility1", icon: "🛋️" },
-  { key: "facility2", icon: "🏥" },
-  { key: "facility3", icon: "🧹" },
-  { key: "facility4", icon: "🩻" },
-  { key: "facility5", icon: "🅿️" },
-  { key: "facility6", icon: "👨‍⚕️" },
+  { key: "facility1" },
+  { key: "facility2" },
+  { key: "facility3" },
+  { key: "facility4" },
+  { key: "facility5" },
+  { key: "facility6" },
 ];
 
 export function AboutContent() {
@@ -139,8 +139,10 @@ export function AboutContent() {
                 transition={{ delay: i * 0.1 }}
                 className="flex items-start gap-4 rounded-2xl bg-surface-light p-5 transition-all duration-300 hover:bg-brand-50"
               >
-                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-white text-2xl shadow-sm">
-                  {f.icon}
+                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center border border-gold-500/40 text-gold-600">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="h-5 w-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-text-primary font-display">

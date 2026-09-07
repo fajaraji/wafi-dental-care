@@ -129,7 +129,7 @@ function SelectService({
         <button
           onClick={onNext}
           disabled={!selected}
-          className="rounded-xl bg-gradient-to-r from-brand-600 to-accent-500 px-8 py-3 text-sm font-bold text-white shadow-lg shadow-brand-600/25 transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="rounded-full bg-ink px-8 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-700 disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {ct("nextStep")} →
         </button>
@@ -180,7 +180,7 @@ function SelectDoctor({
             }`}
           >
             <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-brand-600 to-accent-500 text-white font-bold text-lg">
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-brand-600/25 font-bold text-lg text-brand-700">
                 {doc.name.charAt(0)}
               </div>
               <div>
@@ -215,7 +215,7 @@ function SelectDoctor({
         <button
           onClick={onNext}
           disabled={!selected}
-          className="rounded-xl bg-gradient-to-r from-brand-600 to-accent-500 px-8 py-3 text-sm font-bold text-white shadow-lg shadow-brand-600/25 transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="rounded-full bg-ink px-8 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-700 disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {ct("nextStep")} →
         </button>
@@ -349,7 +349,7 @@ function SelectSchedule({
         <button
           onClick={onNext}
           disabled={!date || !timeSlot}
-          className="rounded-xl bg-gradient-to-r from-brand-600 to-accent-500 px-8 py-3 text-sm font-bold text-white shadow-lg shadow-brand-600/25 transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="rounded-full bg-ink px-8 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-700 disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {ct("nextStep")} →
         </button>
@@ -447,7 +447,7 @@ function PatientDetails({
         <button
           onClick={onNext}
           disabled={!isValid}
-          className="rounded-xl bg-gradient-to-r from-brand-600 to-accent-500 px-8 py-3 text-sm font-bold text-white shadow-lg shadow-brand-600/25 transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="rounded-full bg-ink px-8 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-700 disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {ct("nextStep")} →
         </button>
@@ -539,7 +539,7 @@ function ReviewAndPay({
         <button
           onClick={onPay}
           disabled={isProcessing}
-          className="rounded-xl bg-gradient-to-r from-brand-600 to-accent-500 px-8 py-3 text-sm font-bold text-white shadow-lg shadow-brand-600/25 transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-60 flex items-center gap-2"
+          className="rounded-full bg-ink px-8 py-3 text-sm font-bold text-white transition-colors hover:bg-brand-700 disabled:opacity-60 flex items-center gap-2"
         >
           {isProcessing ? (
             <>
@@ -653,7 +653,7 @@ export default function BookingPage() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600 pt-32 pb-12">
+      <div className="bg-brand-900 pt-32 pb-12">
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <h1 className="font-display text-4xl font-extrabold text-white sm:text-5xl">
             {t("title")}

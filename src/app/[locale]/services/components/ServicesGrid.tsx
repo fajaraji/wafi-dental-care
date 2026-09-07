@@ -20,16 +20,16 @@ export function ServicesGrid() {
     : services;
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 lg:py-28 bg-paper">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
           <button
             onClick={() => setActiveCategory("")}
-            className={`rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 ${
+            className={`rounded-full border px-5 py-2 text-sm font-semibold transition-colors duration-200 ${
               activeCategory === ""
-                ? "bg-brand-600 text-white shadow-lg shadow-brand-600/25"
-                : "bg-gray-100 text-text-secondary hover:bg-brand-50 hover:text-brand-600"
+                ? "border-ink bg-ink text-white"
+                : "border-brand-600/20 text-text-secondary hover:border-brand-600 hover:text-brand-600"
             }`}
           >
             {ct("allCategories")}
@@ -38,10 +38,10 @@ export function ServicesGrid() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 ${
+              className={`rounded-full border px-5 py-2 text-sm font-semibold transition-colors duration-200 ${
                 activeCategory === cat
-                  ? "bg-brand-600 text-white shadow-lg shadow-brand-600/25"
-                  : "bg-gray-100 text-text-secondary hover:bg-brand-50 hover:text-brand-600"
+                  ? "border-ink bg-ink text-white"
+                  : "border-brand-600/20 text-text-secondary hover:border-brand-600 hover:text-brand-600"
               }`}
             >
               {cat}
@@ -56,26 +56,23 @@ export function ServicesGrid() {
               <motion.div
                 key={service.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ delay: index * 0.05, duration: 0.4 }}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 16 }}
+                transition={{ duration: 0.4 }}
               >
                 <Link
                   href={`/${locale}/services/${service.slug}`}
                   className="group block h-full"
                 >
-                  <div className="relative overflow-hidden rounded-2xl bg-surface-light p-6 shadow-md shadow-black/5 transition-all duration-300 h-full group-hover:shadow-xl group-hover:shadow-brand-600/10 group-hover:-translate-y-1">
-                    {/* Top accent line */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-600 to-accent-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-                    {/* Category badge */}
-                    <span className="inline-block rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-600 mb-4">
+                  <div className="flex h-full flex-col border border-brand-600/10 bg-surface-white p-8 transition-colors duration-300 group-hover:border-gold-500/60">
+                    {/* Category label */}
+                    <span className="inline-flex w-fit text-[0.65rem] font-semibold uppercase tracking-widest text-gold-600">
                       {service.category}
                     </span>
 
                     {/* Title */}
-                    <h2 className="text-xl font-bold text-text-primary font-display group-hover:text-brand-600 transition-colors">
+                    <h2 className="mt-4 font-display text-2xl font-medium leading-snug text-brand-800 group-hover:text-brand-600 transition-colors">
                       {isId ? service.titleId : service.titleEn}
                     </h2>
 
@@ -85,12 +82,12 @@ export function ServicesGrid() {
                     </p>
 
                     {/* Price + Duration */}
-                    <div className="mt-4 flex items-center justify-between">
+                    <div className="mt-auto flex items-center justify-between pt-6">
                       <div>
                         <span className="text-xs text-text-muted">
                           {ct("price")}
                         </span>
-                        <p className="text-lg font-extrabold text-accent-600">
+                        <p className="font-display text-lg text-gold-600">
                           {formatIDR(service.price)}
                         </p>
                       </div>
