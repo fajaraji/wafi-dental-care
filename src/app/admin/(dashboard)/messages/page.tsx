@@ -1,6 +1,7 @@
 import { db } from "@/lib/db";
 import { contactMessages } from "@/lib/db/schema";
 import { desc } from "drizzle-orm";
+import MessageReadToggle from "./MessageReadToggle";
 
 export default async function AdminMessagesPage() {
   const messages = await db
@@ -23,16 +24,19 @@ export default async function AdminMessagesPage() {
               msg.isRead ? "bg-white border-gray-100" : "bg-brand-50 border-brand-200"
             }`}
           >
-            <div className="flex items-start justify-between">
+            <div className="flex items-start justify-between gap-4">
               <div>
                 <h3 className="font-bold text-text-primary">{msg.name}</h3>
                 <p className="text-sm text-text-muted">
                   {msg.email && `${msg.email} · `}{msg.phone}
                 </p>
               </div>
-              <span className="text-xs text-text-muted">
-                {msg.createdAt?.toISOString().slice(0, 10)}
-              </span>
+              <div className="flex flex-col items-end gap-2">
+                <span className="text-xs text-text-muted">
+                  {msg.createdAt?.toISOString().slice(0, 10)}
+                </span>
+                <MessageReadToggle id={msg.id} isRead={Boolean(msg.isRead)} />
+              </div>
             </div>
             <p className="mt-3 text-text-secondary text-sm whitespace-pre-wrap">
               {msg.message}
