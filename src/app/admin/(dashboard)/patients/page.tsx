@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
 import { patients, bookings } from "@/lib/db/schema";
+import PatientActions from "./PatientActions";
 
 export default async function AdminPatientsPage() {
   const allPatients = await db.select().from(patients).orderBy(patients.createdAt);
@@ -20,6 +21,7 @@ export default async function AdminPatientsPage() {
                 <th className="px-6 py-3 font-semibold text-text-muted">Kontak</th>
                 <th className="px-6 py-3 font-semibold text-text-muted">Booking</th>
                 <th className="px-6 py-3 font-semibold text-text-muted">Bergabung</th>
+                <th className="px-6 py-3 font-semibold text-text-muted">Aksi</th>
               </tr>
             </thead>
             <tbody>
@@ -40,11 +42,14 @@ export default async function AdminPatientsPage() {
                     <td className="px-6 py-3 text-text-muted text-xs">
                       {p.createdAt?.toISOString().slice(0, 10) || "-"}
                     </td>
+                    <td className="px-6 py-3">
+                      <PatientActions patient={p} />
+                    </td>
                   </tr>
                 );
               })}
               {allPatients.length === 0 && (
-                <tr><td colSpan={4} className="px-6 py-12 text-center text-text-muted">Belum ada pasien</td></tr>
+                <tr><td colSpan={5} className="px-6 py-12 text-center text-text-muted">Belum ada pasien</td></tr>
               )}
             </tbody>
           </table>
