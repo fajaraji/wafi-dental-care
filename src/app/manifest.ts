@@ -13,8 +13,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Klinik gigi profesional di Yogyakarta — Tepat Tindakanya, Jelas Biayanya",
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#1565C0",
+    background_color: "#fbf9f3",
+    theme_color: "#4B4842",
     icons: hasLogo
       ? [
           {

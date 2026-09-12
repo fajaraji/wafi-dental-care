@@ -32,12 +32,10 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-brand-700 via-brand-600 to-accent-600 p-4">
+    <div className="flex min-h-screen items-center justify-center bg-brand-900 p-4">
       <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl">
         <div className="text-center mb-8">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-600 to-accent-500 text-white font-bold text-xl shadow-lg">
-            W
-          </div>
+          <img src="/logo.png" alt="Wafi Dental Care" className="mx-auto h-14 w-auto" />
           <h1 className="mt-4 text-2xl font-extrabold text-text-primary font-display">
             Wafi Admin
           </h1>
@@ -82,7 +80,7 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-xl bg-gradient-to-r from-brand-600 to-accent-500 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-600/25 transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-60 disabled:hover:scale-100"
+            className="w-full rounded-full bg-ink py-3.5 text-sm font-bold text-white transition-colors hover:bg-brand-700 disabled:opacity-60 disabled:hover:scale-100"
           >
             {loading ? "Masuk..." : "Masuk"}
           </button>

@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
           id: `SVC-${service.id}`,
           price: service.price,
           quantity: 1,
-          name: `${isId ? service.titleId : service.titleEn} — drg. ${doctor.name.split(",")[0]} | ${date} ${timeSlot}`,
+          name: (isId ? service.titleId : service.titleEn).slice(0, 50),
         },
       ],
       callbacks: {

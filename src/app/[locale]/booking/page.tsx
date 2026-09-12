@@ -180,8 +180,16 @@ function SelectDoctor({
             }`}
           >
             <div className="flex items-center gap-4">
-              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full border border-brand-600/25 font-bold text-lg text-brand-700">
-                {doc.name.charAt(0)}
+              <div className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center overflow-hidden rounded-full border border-brand-600/25 font-bold text-lg text-brand-700">
+                <span>{doc.name.charAt(0)}</span>
+                <img
+                  src={doc.photo}
+                  alt={doc.name}
+                  className="absolute inset-0 h-full w-full object-cover object-top"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
               </div>
               <div>
                 <p className="font-bold text-text-primary">{doc.name}</p>
