@@ -621,7 +621,10 @@ export default function BookingPage() {
         const script = document.createElement("script");
         script.src =
           "https://app.sandbox.midtrans.com/snap/snap.js";
-        script.setAttribute("data-client-key", "SB-Mid-client-placeholder");
+        script.setAttribute(
+        "data-client-key",
+        process.env.NEXT_PUBLIC_MIDTRANS_CLIENT_KEY || "SB-Mid-client-placeholder"
+      );
         await new Promise<void>((resolve, reject) => {
           script.onload = () => resolve();
           script.onerror = () => reject(new Error("Gagal memuat Midtrans"));
