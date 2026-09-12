@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { generateSnapToken, generateOrderId, SnapParam } from "@/lib/midtrans";
 import { getServiceById, getDoctorById } from "@/lib/booking-utils";
+import { db } from "@/lib/db";
+import { patients, bookings } from "@/lib/db/schema";
+import { eq } from "drizzle-orm";
 
 export async function POST(req: NextRequest) {
   try {
@@ -65,10 +68,48 @@ export async function POST(req: NextRequest) {
 
     const snapResponse = await generateSnapToken(snapParams);
 
+    // Upsert patient by phone
+    const existingPatients = await db
+      .select()
+      .from(patients)
+      .where(eq(patients.phone, patientPhone))
+      .limit(1);
+    let patientId = existingPatients[0]?.id;
+    if (!patientId) {
+      const [created] = await db
+        .insert(patients)
+        .values({
+          name: patientName,
+          email: patientEmail || null,
+          phone: patientPhone,
+        })
+        .returning({ id: patients.id });
+      patientId = created.id;
+    }
+
+    // Persist booking (status pending until webhook confirms payment)
+    const [booking] = await db
+      .insert(bookings)
+      .values({
+        bookingCode: orderId,
+        patientId,
+        doctorId: Number(doctorId),
+        serviceId: Number(serviceId),
+        bookingDate: date,
+        timeSlot,
+        status: "pending",
+        paymentStatus: "pending",
+        midtransOrderId: orderId,
+        totalAmount: service.price,
+        notes: notes || null,
+      })
+      .returning({ id: bookings.id });
+
     return NextResponse.json({
       token: snapResponse.token,
       redirect_url: snapResponse.redirect_url,
       order_id: orderId,
+      bookingId: booking.id,
       metadata: {
         serviceId,
         doctorId,
