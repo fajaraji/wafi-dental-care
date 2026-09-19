@@ -1,11 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
+import crypto from "crypto";
 import { db } from "@/lib/db";
 import { bookings } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 
+function verifySignature(body: any): boolean {
+  const serverKey = process.env.MIDTRANS_SERVER_KEY;
+  if (!serverKey) return true; // dev fallback — warn: enable in production
+
+  const orderId = String(body.order_id ?? "");
+  const statusCode = String(body.status_code ?? "");
+  const grossAmount = String(body.gross_amount ?? "");
+
+  const expected = crypto
+    .createHash("sha512")
+    .update(orderId + statusCode + grossAmount + serverKey)
+    .digest("hex");
+
+  const provided = body.signature_key;
+  return provided === expected;
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
+
+    if (!verifySignature(body)) {
+      return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+    }
 
     const orderId = body.order_id;
     const transactionStatus = body.transaction_status;
