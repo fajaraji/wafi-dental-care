@@ -21,8 +21,15 @@ async function seed() {
   console.log("🌱 Seeding database...\n");
 
   // ─── Admin user ──────────────────────────────────────
-  const adminEmail = process.env.ADMIN_EMAIL || "admin@wafidentalcare.com";
-  const adminPass = process.env.ADMIN_PASSWORD || "admin123";
+  const adminEmail = process.env.ADMIN_EMAIL;
+  const adminPass = process.env.ADMIN_PASSWORD;
+
+  if (!adminEmail || !adminPass) {
+    console.error(
+      "❌ ADMIN_EMAIL and ADMIN_PASSWORD must be set in .env.local before seeding."
+    );
+    process.exit(1);
+  }
 
   await db.insert(schema.adminUsers).values({
     email: adminEmail,

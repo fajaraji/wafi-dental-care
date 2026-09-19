@@ -5,6 +5,29 @@ import { db } from "@/lib/db";
 import { adminUsers } from "@/lib/db/schema";
 import crypto from "crypto";
 
+// ─── Simple in-memory rate limiter (per IP is not available here; per email) ───
+const attempts = new Map<string, { count: number; lockedUntil: number }>();
+const MAX_ATTEMPTS = 5;
+const LOCK_MS = 60 * 1000; // 1 minute
+
+function isLocked(email: string): boolean {
+  const rec = attempts.get(email);
+  if (!rec) return false;
+  if (Date.now() < rec.lockedUntil) return true;
+  attempts.delete(email);
+  return false;
+}
+
+function recordFailure(email: string) {
+  const rec = attempts.get(email) ?? { count: 0, lockedUntil: 0 };
+  rec.count += 1;
+  if (rec.count >= MAX_ATTEMPTS) {
+    rec.lockedUntil = Date.now() + LOCK_MS;
+    rec.count = 0;
+  }
+  attempts.set(email, rec);
+}
+
 function hashPassword(password: string): string {
   const salt = crypto.randomBytes(16).toString("hex");
   const hash = crypto
@@ -19,6 +42,12 @@ function verifyPassword(password: string, stored: string): boolean {
     .pbkdf2Sync(password, salt, 1000, 64, "sha512")
     .toString("hex");
   return hash === verify;
+}
+
+const authSecret = process.env.AUTH_SECRET;
+
+if (!authSecret && process.env.NODE_ENV === "production") {
+  throw new Error("AUTH_SECRET is required in production");
 }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
@@ -36,21 +65,34 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
 
+        const email = credentials.email as string;
+        if (isLocked(email)) {
+          throw new Error("Terlalu banyak percobaan. Coba lagi dalam 1 menit.");
+        }
+
         const users = await db
           .select()
           .from(adminUsers)
-          .where(eq(adminUsers.email, credentials.email as string))
+          .where(eq(adminUsers.email, email))
           .limit(1);
 
         const user = users[0];
-        if (!user || !user.isActive) return null;
+        if (!user || !user.isActive) {
+          recordFailure(email);
+          return null;
+        }
 
         const valid = verifyPassword(
           credentials.password as string,
           user.passwordHash
         );
 
-        if (!valid) return null;
+        if (!valid) {
+          recordFailure(email);
+          return null;
+        }
+
+        attempts.delete(email);
 
         return {
           id: String(user.id),
@@ -75,7 +117,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return session;
     },
   },
-  secret: process.env.AUTH_SECRET,
+  secret: authSecret,
 });
 
 export { hashPassword };

@@ -6,7 +6,10 @@ import { eq } from "drizzle-orm";
 
 function verifySignature(body: any): boolean {
   const serverKey = process.env.MIDTRANS_SERVER_KEY;
-  if (!serverKey) return true; // dev fallback — warn: enable in production
+  if (!serverKey) {
+    console.error("MIDTRANS_SERVER_KEY is not set — rejecting webhook");
+    return false;
+  }
 
   const orderId = String(body.order_id ?? "");
   const statusCode = String(body.status_code ?? "");
