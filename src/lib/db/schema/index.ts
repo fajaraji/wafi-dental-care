@@ -131,3 +131,10 @@ export const adminUsers = pgTable("admin_users", {
   isActive: boolean("is_active").default(true),
   createdAt: timestamp("created_at").defaultNow(),
 });
+
+// ─── Login Rate Limiting ────────────────────────────────────
+export const loginAttempts = pgTable("login_attempts", {
+  email: text("email").primaryKey(),
+  count: integer("count").notNull().default(0),
+  lockedUntil: timestamp("locked_until"),
+});

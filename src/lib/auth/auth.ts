@@ -2,30 +2,46 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { eq } from "drizzle-orm";
 import { db } from "@/lib/db";
-import { adminUsers } from "@/lib/db/schema";
+import { adminUsers, loginAttempts } from "@/lib/db/schema";
 import crypto from "crypto";
 
-// ─── Simple in-memory rate limiter (per IP is not available here; per email) ───
-const attempts = new Map<string, { count: number; lockedUntil: number }>();
 const MAX_ATTEMPTS = 5;
 const LOCK_MS = 60 * 1000; // 1 minute
 
-function isLocked(email: string): boolean {
-  const rec = attempts.get(email);
-  if (!rec) return false;
-  if (Date.now() < rec.lockedUntil) return true;
-  attempts.delete(email);
+async function isLocked(email: string): Promise<boolean> {
+  const rows = await db.select().from(loginAttempts).where(eq(loginAttempts.email, email)).limit(1);
+  const rec = rows[0];
+  if (!rec || !rec.lockedUntil) return false;
+  if (rec.lockedUntil.getTime() > Date.now()) return true;
+  await db.delete(loginAttempts).where(eq(loginAttempts.email, email));
   return false;
 }
 
-function recordFailure(email: string) {
-  const rec = attempts.get(email) ?? { count: 0, lockedUntil: 0 };
-  rec.count += 1;
-  if (rec.count >= MAX_ATTEMPTS) {
-    rec.lockedUntil = Date.now() + LOCK_MS;
-    rec.count = 0;
+async function recordFailure(email: string) {
+  const rows = await db.select().from(loginAttempts).where(eq(loginAttempts.email, email)).limit(1);
+  const rec = rows[0];
+  const count = (rec?.count ?? 0) + 1;
+  if (count >= MAX_ATTEMPTS) {
+    await db
+      .insert(loginAttempts)
+      .values({ email, count: 0, lockedUntil: new Date(Date.now() + LOCK_MS) })
+      .onConflictDoUpdate({
+        target: loginAttempts.email,
+        set: { count: 0, lockedUntil: new Date(Date.now() + LOCK_MS) },
+      });
+  } else {
+    await db
+      .insert(loginAttempts)
+      .values({ email, count, lockedUntil: null })
+      .onConflictDoUpdate({
+        target: loginAttempts.email,
+        set: { count, lockedUntil: null },
+      });
   }
-  attempts.set(email, rec);
+}
+
+async function clearAttempts(email: string) {
+  await db.delete(loginAttempts).where(eq(loginAttempts.email, email));
 }
 
 function hashPassword(password: string): string {
@@ -66,7 +82,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (!credentials?.email || !credentials?.password) return null;
 
         const email = credentials.email as string;
-        if (isLocked(email)) {
+        if (await isLocked(email)) {
           throw new Error("Terlalu banyak percobaan. Coba lagi dalam 1 menit.");
         }
 
@@ -78,7 +94,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         const user = users[0];
         if (!user || !user.isActive) {
-          recordFailure(email);
+          await recordFailure(email);
           return null;
         }
 
@@ -88,11 +104,11 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         );
 
         if (!valid) {
-          recordFailure(email);
+          await recordFailure(email);
           return null;
         }
 
-        attempts.delete(email);
+        await clearAttempts(email);
 
         return {
           id: String(user.id),
