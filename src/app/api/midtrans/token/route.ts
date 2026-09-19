@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { generateSnapToken, generateOrderId, SnapParam } from "@/lib/midtrans";
-import { getServiceById, getDoctorById } from "@/lib/booking-utils";
 import { db } from "@/lib/db";
 import { patients, bookings } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, and, ne } from "drizzle-orm";
+import { getServiceByIdFromDb, getDoctorByIdFromDb } from "@/lib/db/queries";
 
 export async function POST(req: NextRequest) {
   try {
@@ -28,13 +28,37 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const service = getServiceById(Number(serviceId));
-    const doctor = getDoctorById(Number(doctorId));
+    const service = await getServiceByIdFromDb(Number(serviceId));
+    const doctor = await getDoctorByIdFromDb(Number(doctorId));
 
     if (!service || !doctor) {
       return NextResponse.json(
         { error: "Layanan atau dokter tidak ditemukan" },
         { status: 404 }
+      );
+    }
+
+    // Normalize "HH:MM" -> "HH:MM:00" for `time` column
+    const timeSlotNorm = timeSlot.length === 5 ? `${timeSlot}:00` : timeSlot;
+
+    // Prevent double-booking same doctor + date + slot
+    const conflict = await db
+      .select()
+      .from(bookings)
+      .where(
+        and(
+          eq(bookings.doctorId, Number(doctorId)),
+          eq(bookings.bookingDate, date),
+          eq(bookings.timeSlot, timeSlotNorm),
+          ne(bookings.status, "cancelled")
+        )
+      )
+      .limit(1);
+
+    if (conflict.length > 0) {
+      return NextResponse.json(
+        { error: "Jadwal ini sudah dibooking. Silakan pilih waktu lain." },
+        { status: 409 }
       );
     }
 
@@ -96,7 +120,7 @@ export async function POST(req: NextRequest) {
         doctorId: Number(doctorId),
         serviceId: Number(serviceId),
         bookingDate: date,
-        timeSlot,
+        timeSlot: timeSlotNorm,
         status: "pending",
         paymentStatus: "pending",
         midtransOrderId: orderId,
