@@ -2,7 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { getServiceBySlug, getAllServices, formatIDR } from "@/lib/utils/helpers";
+import { formatIDR } from "@/lib/utils/helpers";
+import { getServiceBySlugFromDb, getServiceCategoriesFromDb } from "@/lib/db/queries";
 
 export async function generateMetadata({
   params,
@@ -10,7 +11,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const service = getServiceBySlug(slug);
+  const service = await getServiceBySlugFromDb(slug);
   if (!service) return { title: "Layanan Tidak Ditemukan | Wafi Dental Care" };
 
   const isId = locale === "id";
@@ -29,13 +30,11 @@ export default async function ServiceDetailPage({
   const t = await getTranslations("services");
   const ct = await getTranslations("common");
   const isId = locale === "id";
-  const service = getServiceBySlug(slug);
+  const service = await getServiceBySlugFromDb(slug);
 
   if (!service) notFound();
 
-  const categories = [
-    ...new Set(getAllServices().map((s) => s.category)),
-  ];
+  const categories = await getServiceCategoriesFromDb();
 
   return (
     <div className="min-h-screen">

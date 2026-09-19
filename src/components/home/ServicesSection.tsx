@@ -3,51 +3,7 @@
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { motion } from "motion/react";
-
-const dummyServices = [
-  {
-    id: "root-canal",
-    titleId: "Root Canal Treatment",
-    titleEn: "Root Canal Treatment",
-    price: 1500000,
-    category: "Endodonsi",
-  },
-  {
-    id: "behel",
-    titleId: "Behel Gigi / Orthodontic",
-    titleEn: "Dental Braces / Orthodontic",
-    price: 8500000,
-    category: "Orthodonsi",
-  },
-  {
-    id: "scaling",
-    titleId: "Scaling / Pembersihan Karang Gigi",
-    titleEn: "Scaling / Dental Cleaning",
-    price: 350000,
-    category: "Umum",
-  },
-  {
-    id: "implan",
-    titleId: "Implan Gigi / Gigi Tiruan Permanen",
-    titleEn: "Dental Implant / Permanent Denture",
-    price: 12000000,
-    category: "Bedah",
-  },
-  {
-    id: "veneer",
-    titleId: "Veneer Gigi",
-    titleEn: "Dental Veneer",
-    price: 2500000,
-    category: "Estetik",
-  },
-  {
-    id: "bleaching",
-    titleId: "Bleaching / Pemutihan Gigi",
-    titleEn: "Teeth Whitening / Bleaching",
-    price: 1200000,
-    category: "Estetik",
-  },
-];
+import type { Service } from "@/lib/db/queries";
 
 function formatIDR(amount: number) {
   return new Intl.NumberFormat("id-ID", {
@@ -57,7 +13,7 @@ function formatIDR(amount: number) {
   }).format(amount);
 }
 
-export function ServicesSection() {
+export function ServicesSection({ services }: { services: Service[] }) {
   const locale = useLocale();
   const isId = locale === "id";
   const t = useTranslations("home");
@@ -83,7 +39,7 @@ export function ServicesSection() {
 
         {/* Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {dummyServices.map((service, index) => (
+          {services.map((service, index) => (
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 20 }}
@@ -106,7 +62,7 @@ export function ServicesSection() {
                   {formatIDR(service.price)}
                 </p>
                 <Link
-                  href={`/${locale}/services/${service.id}`}
+                  href={`/${locale}/services/${service.slug}`}
                   className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-brand-600 transition-all duration-300 group-hover:gap-3"
                 >
                   Detail Layanan

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { ServicesGrid } from "./components/ServicesGrid";
 import { PageHero } from "@/components/layout/PageHero";
+import { getServicesFromDb, getServiceCategoriesFromDb } from "@/lib/db/queries";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -13,6 +14,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ServicesPage() {
   const t = await getTranslations("services");
+  const services = await getServicesFromDb();
+  const categories = await getServiceCategoriesFromDb();
 
   return (
     <div className="min-h-screen">
@@ -22,7 +25,7 @@ export default async function ServicesPage() {
         subtitle={t("subtitle")}
         centered
       />
-      <ServicesGrid />
+      <ServicesGrid services={services} categories={categories} />
     </div>
   );
 }

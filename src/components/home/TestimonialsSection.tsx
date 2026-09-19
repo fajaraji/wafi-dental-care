@@ -1,41 +1,13 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import type { Testimonial } from "@/lib/db/queries";
 
-const dummyTestimonials = [
-  {
-    id: 1,
-    name: "Dewi Anggraini",
-    rating: 5,
-    content:
-      "Pelayanan sangat profesional dan ramah! Dokternya telaten menjelaskan setiap tahap perawatan. Scaling gigi saya hasilnya bersih banget. Recommended!",
-  },
-  {
-    id: 2,
-    name: "Rizki Pratama",
-    rating: 5,
-    content:
-      "Awalnya takut cabut gigi, tapi ternyata prosesnya cepat dan hampir ga kerasa sakit. Dokternya keren! Tempatnya juga bersih dan nyaman.",
-  },
-  {
-    id: 3,
-    name: "Sarah Wijaya",
-    rating: 5,
-    content:
-      "Pasang behel di Wafi Dental Care, hasilnya memuaskan! Dokternya detail banget dan selalu ingetin jadwal kontrol. Harga juga transparan.",
-  },
-  {
-    id: 4,
-    name: "Bapak Haryono",
-    rating: 5,
-    content:
-      "Saya pasien senior, takut ke dokter gigi. Tapi tim Wafi sangat sabar dan pengertian. Sekarang rajin kontrol 6 bulan sekali. Terima kasih!",
-  },
-];
-
-export function TestimonialsSection() {
+export function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) {
   const t = useTranslations("home");
+  const locale = useLocale();
+  const isId = locale === "id";
   return (
     <section className="py-20 lg:py-28 bg-surface-light">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -55,13 +27,13 @@ export function TestimonialsSection() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {dummyTestimonials.map((testimonial, index) => (
+          {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: index * 0.08 }}
+              transition={{ duration: 0.45, delay: (index % 4) * 0.08 }}
               className="flex flex-col bg-paper p-8"
             >
               <svg
@@ -83,16 +55,16 @@ export function TestimonialsSection() {
               </div>
 
               <p className="mt-5 font-display text-lg leading-relaxed text-text-secondary">
-                &ldquo;{testimonial.content}&rdquo;
+                &ldquo;{isId ? testimonial.contentId : testimonial.contentEn}&rdquo;
               </p>
 
               <div className="mt-6 flex items-center gap-3 border-t border-brand-600/10 pt-5">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full border border-brand-600/20 font-display text-sm font-semibold text-brand-700">
-                  {testimonial.name.charAt(0)}
+                  {testimonial.patientName.charAt(0)}
                 </div>
                 <div>
                   <p className="text-sm font-semibold text-brand-800">
-                    {testimonial.name}
+                    {testimonial.patientName}
                   </p>
                   <p className="text-xs text-text-muted">Pasien Wafi Dental Care</p>
                 </div>

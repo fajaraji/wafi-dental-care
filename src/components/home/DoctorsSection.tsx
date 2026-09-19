@@ -3,43 +3,11 @@
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { motion } from "motion/react";
+import type { Doctor, DoctorSchedule } from "@/lib/db/queries";
 
-const dummyDoctors = [
-  {
-    id: 1,
-    name: "drg. Siti Nuraini, Sp.KG",
-    specialtyId: "Spesialis Konservasi Gigi (Endodonsi)",
-    specialtyEn: "Conservative Dentistry Specialist (Endodontics)",
-    photo: "/images/doctors/dr1.jpg",
-    bioId: "Lulusan FKG Universitas Gadjah Mada dengan pengalaman lebih dari 8 tahun di bidang perawatan saluran akar.",
-  },
-  {
-    id: 2,
-    name: "drg. Ahmad Fauzi, Sp.Ort",
-    specialtyId: "Spesialis Orthodonsi",
-    specialtyEn: "Orthodontics Specialist",
-    photo: "/images/doctors/dr2.jpg",
-    bioId: "Berpengalaman menangani berbagai kasus behel dan aligner dengan pendekatan yang nyaman dan estetik.",
-  },
-  {
-    id: 3,
-    name: "drg. Ratna Dewi",
-    specialtyId: "Dokter Gigi Umum",
-    specialtyEn: "General Dentist",
-    photo: "/images/doctors/dr3.jpg",
-    bioId: "Fokus pada perawatan gigi preventif dan estetik dengan sentuhan yang lembut dan ramah untuk semua usia.",
-  },
-  {
-    id: 4,
-    name: "drg. Budi Santoso, Sp.BM",
-    specialtyId: "Spesialis Bedah Mulut",
-    specialtyEn: "Oral Surgery Specialist",
-    photo: "/images/doctors/dr4.jpg",
-    bioId: "Ahli dalam prosedur odontektomi dan implan gigi dengan teknik minimal invasif untuk pemulihan cepat.",
-  },
-];
+type DoctorWithSchedules = Doctor & { schedules: DoctorSchedule[] };
 
-export function DoctorsSection() {
+export function DoctorsSection({ doctors }: { doctors: DoctorWithSchedules[] }) {
   const locale = useLocale();
   const isId = locale === "id";
   const t = useTranslations("home");
@@ -63,7 +31,7 @@ export function DoctorsSection() {
         </div>
 
         <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2">
-          {dummyDoctors.map((doctor, index) => (
+          {doctors.map((doctor, index) => (
             <motion.div
               key={doctor.id}
               initial={{ opacity: 0, y: 20 }}
@@ -81,7 +49,7 @@ export function DoctorsSection() {
                   </svg>
                 </div>
                 <img
-                  src={doctor.photo}
+                  src={doctor.photo ?? undefined}
                   alt={doctor.name}
                   className="absolute inset-0 h-full w-full object-cover object-top"
                   onError={(e) => {

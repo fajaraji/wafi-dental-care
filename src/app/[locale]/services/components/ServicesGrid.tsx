@@ -4,15 +4,20 @@ import { useState } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "motion/react";
-import { getAllServices, getServiceCategories, formatIDR } from "@/lib/utils/helpers";
+import { formatIDR } from "@/lib/utils/helpers";
+import type { Service } from "@/lib/db/queries";
 
-export function ServicesGrid() {
+export function ServicesGrid({
+  services,
+  categories,
+}: {
+  services: Service[];
+  categories: string[];
+}) {
   const locale = useLocale();
   const t = useTranslations("services");
   const ct = useTranslations("common");
   const isId = locale === "id";
-  const services = getAllServices();
-  const categories = getServiceCategories();
   const [activeCategory, setActiveCategory] = useState<string>("");
 
   const filtered = activeCategory

@@ -3,14 +3,16 @@
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { motion } from "motion/react";
-import { getAllDoctors, dayNames } from "@/lib/utils/helpers";
+import { dayNames } from "@/lib/utils/helpers";
+import type { Doctor, DoctorSchedule } from "@/lib/db/queries";
 
-export function DoctorsGrid() {
+type DoctorWithSchedules = Doctor & { schedules: DoctorSchedule[] };
+
+export function DoctorsGrid({ doctors }: { doctors: DoctorWithSchedules[] }) {
   const locale = useLocale();
   const t = useTranslations("doctors");
   const ct = useTranslations("common");
   const isId = locale === "id";
-  const doctors = getAllDoctors();
 
   return (
     <section className="py-20 bg-white">
@@ -35,7 +37,7 @@ export function DoctorsGrid() {
                     </svg>
                   </div>
                   <img
-                    src={doctor.photo}
+                    src={doctor.photo ?? undefined}
                     alt={doctor.name}
                     className="absolute inset-0 h-full w-full object-cover object-top"
                     onError={(e) => {
@@ -51,7 +53,7 @@ export function DoctorsGrid() {
                     {doctor.name}
                   </h2>
                   <p className="mt-1 text-xs font-semibold uppercase tracking-widest text-gold-600">
-                    {isId ? doctor.titleId : doctor.titleEn}
+                    {isId ? doctor.specialtyId : doctor.specialtyEn}
                   </p>
                   <p className="mt-3 text-sm leading-relaxed text-text-secondary">
                     {isId ? doctor.bioId : doctor.bioEn}

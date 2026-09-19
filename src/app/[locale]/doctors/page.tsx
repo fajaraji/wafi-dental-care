@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { DoctorsGrid } from "./components/DoctorsGrid";
 import { PageHero } from "@/components/layout/PageHero";
+import { getDoctorsFromDb } from "@/lib/db/queries";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -13,6 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function DoctorsPage() {
   const t = await getTranslations("doctors");
+  const doctors = await getDoctorsFromDb();
 
   return (
     <div className="min-h-screen">
@@ -22,7 +24,7 @@ export default async function DoctorsPage() {
         subtitle={t("subtitle")}
         centered
       />
-      <DoctorsGrid />
+      <DoctorsGrid doctors={doctors} />
     </div>
   );
 }

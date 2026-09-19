@@ -2,12 +2,12 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { motion } from "motion/react";
-import { getAllTestimonials, formatDate } from "@/lib/utils/helpers";
+import { formatDate } from "@/lib/utils/helpers";
+import type { Testimonial } from "@/lib/db/queries";
 
-export function TestimonialsList() {
+export function TestimonialsList({ testimonials }: { testimonials: Testimonial[] }) {
   const locale = useLocale();
   const isId = locale === "id";
-  const testimonials = getAllTestimonials();
   const t = useTranslations("testimonials");
 
   return (
@@ -68,7 +68,7 @@ export function TestimonialsList() {
                 </div>
                 <div className="ml-auto text-xs text-text-muted">
                   {testimonial.createdAt
-                    ? formatDate(testimonial.createdAt, locale)
+                    ? formatDate(new Date(testimonial.createdAt).toISOString(), locale)
                     : ""}
                 </div>
               </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { TestimonialsList } from "./components/TestimonialsList";
 import { PageHero } from "@/components/layout/PageHero";
+import { getTestimonialsFromDb } from "@/lib/db/queries";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -13,6 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function TestimonialsPage() {
   const t = await getTranslations("testimonials");
+  const testimonials = await getTestimonialsFromDb();
 
   return (
     <div className="min-h-screen">
@@ -22,7 +24,7 @@ export default async function TestimonialsPage() {
         subtitle={t("subtitle")}
         centered
       />
-      <TestimonialsList />
+      <TestimonialsList testimonials={testimonials} />
     </div>
   );
 }
