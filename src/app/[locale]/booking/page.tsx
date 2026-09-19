@@ -1,11 +1,14 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "motion/react";
-import { getAllServices, getAllDoctors, formatIDR, dayNames } from "@/lib/utils/helpers";
-import { generateTimeSlots, formatDateDisplay } from "@/lib/booking-utils";
+import { formatIDR, dayNames } from "@/lib/utils/helpers";
+import { formatDateDisplay } from "@/lib/booking-utils";
 import type { BookingFormData } from "@/lib/booking-utils";
+import type { Service, Doctor, DoctorSchedule } from "@/lib/db/queries";
+
+type DoctorWithSchedules = Doctor & { schedules: DoctorSchedule[] };
 
 type Step = 1 | 2 | 3 | 4 | 5;
 
@@ -72,16 +75,17 @@ function SelectService({
   onNext,
   t,
   ct,
+  services,
 }: {
   selected: number | null;
   onSelect: (id: number) => void;
   onNext: () => void;
   t: (k: string) => string;
   ct: (k: string) => string;
+  services: Service[];
 }) {
   const locale = useLocale();
   const isId = locale === "id";
-  const services = getAllServices();
 
   return (
     <motion.div
@@ -145,6 +149,7 @@ function SelectDoctor({
   onBack,
   t,
   ct,
+  doctors,
 }: {
   selected: number | null;
   onSelect: (id: number) => void;
@@ -152,10 +157,10 @@ function SelectDoctor({
   onBack: () => void;
   t: (k: string) => string;
   ct: (k: string) => string;
+  doctors: DoctorWithSchedules[];
 }) {
   const locale = useLocale();
   const isId = locale === "id";
-  const doctors = getAllDoctors();
 
   return (
     <motion.div
@@ -183,7 +188,7 @@ function SelectDoctor({
               <div className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center overflow-hidden rounded-full border border-brand-600/25 font-bold text-lg text-brand-700">
                 <span>{doc.name.charAt(0)}</span>
                 <img
-                  src={doc.photo}
+                  src={doc.photo ?? undefined}
                   alt={doc.name}
                   className="absolute inset-0 h-full w-full object-cover object-top"
                   onError={(e) => {
@@ -194,7 +199,7 @@ function SelectDoctor({
               <div>
                 <p className="font-bold text-text-primary">{doc.name}</p>
                 <p className="text-sm text-accent-600 font-medium">
-                  {isId ? doc.titleId : doc.titleEn}
+                  {isId ? doc.specialtyId : doc.specialtyEn}
                 </p>
                 <div className="mt-1 flex flex-wrap gap-1">
                   {doc.schedules.map((s, i) => (
@@ -242,6 +247,7 @@ function SelectSchedule({
   onBack,
   t,
   ct,
+  doctors,
 }: {
   doctorId: number | null;
   date: string | null;
@@ -252,10 +258,30 @@ function SelectSchedule({
   onBack: () => void;
   t: (k: string) => string;
   ct: (k: string) => string;
+  doctors: DoctorWithSchedules[];
 }) {
-  const slots: { time: string; available: boolean }[] = doctorId
-    ? generateTimeSlots(doctorId, date)
-    : [];
+  const slots: { time: string; available: boolean }[] = (() => {
+    if (!doctorId || !date) return [];
+    const doctor = doctors.find((d) => d.id === doctorId);
+    if (!doctor) return [];
+    const dayOfWeek = new Date(date + "T00:00:00").getDay();
+    const schedule = doctor.schedules.find((s) => s.dayOfWeek === dayOfWeek);
+    if (!schedule) return [];
+    const [sh, sm] = schedule.startTime.split(":").map(Number);
+    const [eh, em] = schedule.endTime.split(":").map(Number);
+    const start = sh * 60 + sm;
+    const end = eh * 60 + em;
+    const out: { time: string; available: boolean }[] = [];
+    for (let m = start; m < end; m += 30) {
+      const h = Math.floor(m / 60);
+      const min = m % 60;
+      out.push({
+        time: `${String(h).padStart(2, "0")}:${String(min).padStart(2, "0")}`,
+        available: true,
+      });
+    }
+    return out;
+  })();
 
   // Generate next 14 dates
   const today = new Date();
@@ -471,6 +497,8 @@ function ReviewAndPay({
   onPay,
   t,
   ct,
+  services,
+  doctors,
 }: {
   data: BookingFormData;
   onBack: () => void;
@@ -478,11 +506,13 @@ function ReviewAndPay({
   onPay: () => void;
   t: (k: string) => string;
   ct: (k: string) => string;
+  services: Service[];
+  doctors: DoctorWithSchedules[];
 }) {
   const locale = useLocale();
   const isId = locale === "id";
-  const service = getAllServices().find((s) => s.id === data.serviceId);
-  const doctor = getAllDoctors().find((d) => d.id === data.doctorId);
+  const service = services.find((s) => s.id === data.serviceId);
+  const doctor = doctors.find((d) => d.id === data.doctorId);
 
   return (
     <motion.div
@@ -599,6 +629,24 @@ export default function BookingPage() {
   });
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState("");
+  const [services, setServices] = useState<Service[]>([]);
+  const [doctors, setDoctors] = useState<DoctorWithSchedules[]>([]);
+
+  useEffect(() => {
+    let mounted = true;
+    fetch("/api/booking/options")
+      .then((r) => r.json())
+      .then((data) => {
+        if (mounted) {
+          setServices(data.services ?? []);
+          setDoctors(data.doctors ?? []);
+        }
+      })
+      .catch(() => {});
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const updateForm = useCallback(
     (patch: Partial<BookingFormData>) => setForm((f) => ({ ...f, ...patch })),
@@ -699,6 +747,7 @@ export default function BookingPage() {
                 onNext={() => setStep(2)}
                 t={t}
                 ct={ct}
+                services={services}
               />
             )}
             {step === 2 && (
@@ -710,6 +759,7 @@ export default function BookingPage() {
                 onBack={() => setStep(1)}
                 t={t}
                 ct={ct}
+                doctors={doctors}
               />
             )}
             {step === 3 && (
@@ -724,6 +774,7 @@ export default function BookingPage() {
                 onBack={() => setStep(2)}
                 t={t}
                 ct={ct}
+                doctors={doctors}
               />
             )}
             {step === 4 && (
@@ -746,6 +797,8 @@ export default function BookingPage() {
                 onPay={handlePay}
                 t={t}
                 ct={ct}
+                services={services}
+                doctors={doctors}
               />
             )}
           </AnimatePresence>
