@@ -2,6 +2,14 @@
 
 A bilingual (Indonesian / English) dental clinic website and admin dashboard for **Wafi Dental Care** — a dental clinic in Yogyakarta, Indonesia. Includes a public marketing site, an online 5-step booking flow with **Midtrans Snap** payment, and a full admin dashboard for managing clinic operations.
 
+## Explore the implementation
+
+A patient selects a service and an available slot. The booking and payment routes connect that choice to the clinic's records. Start with these files to trace the flow.
+
+- [Booking choices](src/app/api/booking/options/route.ts)
+- [Appointment creation and payment token](src/app/api/midtrans/token/route.ts)
+- [Payment notifications](src/app/api/midtrans/webhook/route.ts)
+
 ## Features
 
 - **Public website** — homepage, services (17+), doctors & schedules, blog, testimonials, about, and contact pages.
@@ -147,7 +155,7 @@ Deploy to Vercel:
 3. Add all environment variables from `.env.example`.
 4. Deploy.
 
-The database is serverless (Neon), so no extra database setup is needed on Vercel.
+Configure the Neon connection and initialize the schema using the Database Setup section before testing booking or admin routes.
 
 ## License
 
